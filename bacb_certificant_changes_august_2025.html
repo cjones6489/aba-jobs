@@ -1,0 +1,1373 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BACB Certificant Changes - August 2025</title>
+    
+    <!-- Modern CSS Framework and Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- DataTables CSS -->
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.bootstrap5.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css" rel="stylesheet">
+    
+    
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary-color: #64748b;
+            --success-color: #10b981;
+            --success-light: #34d399;
+            --danger-color: #ef4444;
+            --danger-light: #f87171;
+            --warning-color: #f59e0b;
+            --warning-light: #fbbf24;
+            --purple-color: #8b5cf6;
+            --purple-light: #a78bfa;
+            --cyan-color: #06b6d4;
+            --cyan-light: #22d3ee;
+            --light-bg: #f8fafc;
+            --glass-bg: rgba(255, 255, 255, 0.25);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --card-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            --glow-shadow: 0 0 40px rgba(99, 102, 241, 0.3);
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .header {
+            background: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .header h1 {
+            font-weight: 600;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+        }
+        
+        .header .subtitle {
+            font-size: 1rem;
+            color: #64748b;
+            font-weight: 400;
+        }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 0 auto 2rem auto;
+            max-width: 1200px;
+            padding: 0 1rem;
+        }
+        
+        .summary-card {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            min-height: 120px;
+        }
+        
+        .summary-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .card-header {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.25rem;
+            line-height: 1;
+        }
+        
+        .card-change {
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .card-subtitle {
+            font-size: 0.875rem;
+            color: #64748b;
+            margin-top: 0.25rem;
+        }
+        
+        .positive {
+            color: var(--success-color);
+            font-weight: 600;
+        }
+        
+        .negative {
+            color: var(--danger-color);
+            font-weight: 600;
+        }
+        
+        .neutral {
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+        
+        .main-table {
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
+            max-width: 1200px;
+            margin: 0 auto 2rem auto;
+        }
+        
+        .table-header {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .table-header h3 {
+            margin: 0;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e293b;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .table-header h3 i {
+            color: var(--primary-color);
+        }
+        
+        .data-table {
+            width: 100%;
+            margin: 0;
+        }
+        
+        .data-table th {
+            background: #f8fafc;
+            padding: 0.75rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .data-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #f1f5f9;
+            vertical-align: middle;
+        }
+        
+        .data-table tr:hover {
+            background-color: #f8fafc;
+        }
+        
+        .change-icon {
+            margin-right: 0.25rem;
+            font-size: 0.875rem;
+        }
+        
+        /* Compact column headers */
+        .data-table th {
+            font-size: 0.8rem;
+            padding: 0.75rem 0.5rem;
+            line-height: 1.2;
+        }
+        
+        .cert-change-cell {
+            text-align: right;
+            font-weight: 500;
+            font-variant-numeric: tabular-nums;
+            font-size: 0.875rem;
+            min-width: 60px;
+        }
+        
+        /* Compact table styling */
+        .data-table {
+            table-layout: auto;
+            width: auto;
+            margin: 0 auto;
+        }
+        
+        .data-table th,
+        .data-table td {
+            padding: 0.5rem 0.75rem;
+            white-space: nowrap;
+            border-right: 1px solid #f1f5f9;
+        }
+        
+        .data-table th:last-child,
+        .data-table td:last-child {
+            border-right: none;
+        }
+        
+        .state-cell {
+            font-weight: 600;
+            font-size: 1rem;
+            text-align: center;
+            min-width: 50px;
+        }
+        
+        .number-cell {
+            text-align: right;
+            font-weight: 500;
+            font-variant-numeric: tabular-nums;
+            min-width: 80px;
+        }
+        
+        .change-cell {
+            text-align: right;
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+            min-width: 70px;
+        }
+        
+                /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .data-table th,
+            .data-table td {
+                padding: 0.4rem 0.5rem;
+                font-size: 0.85rem;
+            }
+            
+            .cert-change-cell {
+                font-size: 0.8rem;
+                min-width: 50px;
+            }
+            
+            .main-table {
+                max-width: 100%;
+                margin: 0;
+            }
+        }
+        
+        /* DataTables Custom Styling */
+        .dataTables_wrapper {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .dataTables_wrapper .dataTables_length,
+        .dataTables_wrapper .dataTables_filter,
+        .dataTables_wrapper .dataTables_info,
+        .dataTables_wrapper .dataTables_paginate {
+            margin-bottom: 1rem;
+        }
+        
+        .dataTables_wrapper .dataTables_filter input {
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 0.5rem 0.75rem;
+            margin-left: 0.5rem;
+        }
+        
+        .dataTables_wrapper .dataTables_length select {
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 0.25rem 0.5rem;
+            margin: 0 0.5rem;
+        }
+        
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            margin: 0 2px;
+            padding: 0.5rem 0.75rem;
+            background: white;
+            color: var(--secondary-color);
+        }
+        
+        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .dt-buttons {
+            margin-bottom: 1rem;
+        }
+        
+        .dt-button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 0.5rem 1rem;
+            margin-right: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .dt-button:hover {
+            background: #1d4ed8;
+            color: white;
+        }
+        
+        table.dataTable thead th {
+            border-bottom: 2px solid var(--primary-color);
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        table.dataTable tbody tr:hover {
+            background-color: #f8fafc !important;
+        }
+        
+        .dataTables_wrapper .dataTables_info {
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+        
+        
+        .footer {
+            margin-top: 2rem;
+            padding: 2rem 0;
+            background: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+        
+        .footer p {
+            margin: 0.25rem 0;
+            text-align: center;
+        }
+        
+        .footer i {
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 3rem 0;
+            }
+            
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .header .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .summary-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                margin: -2rem auto 2rem auto;
+                padding: 0 1rem;
+            }
+            
+            .summary-card {
+                min-height: 120px;
+                padding: 1.5rem;
+            }
+            
+            .card-value {
+                font-size: 2rem;
+            }
+            
+            .main-table {
+                margin: 0 1rem 2rem 1rem;
+                border-radius: 16px;
+            }
+            
+            .table-header {
+                padding: 1.5rem;
+            }
+            
+            .table-header h3 {
+                font-size: 1.25rem;
+            }
+            
+            .data-table th,
+            .data-table td {
+                padding: 1rem 0.75rem;
+                font-size: 0.85rem;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            .summary-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1><i class="fas fa-chart-line me-3"></i>BACB Certificant Changes</h1>
+                    <p class="subtitle">Month-over-Month Analysis: August to September 2025</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+                        <!-- Summary Cards -->
+        <div class="summary-grid" style="grid-template-columns: repeat(5, minmax(180px, 1fr));">
+            <div class="summary-card">
+                <div class="card-header">Total Certificants</div>
+                <div class="card-value">305,265</div>
+                <div class="card-change positive">+5,566 (+1.9%)</div>
+            </div>
+            
+            <div class="summary-card">
+                <div class="card-header">BCBA-D</div>
+                <div class="card-value">2,865</div>
+                <div class="card-change negative">-3 (-0.1%)</div>
+            </div>
+            
+            <div class="summary-card">
+                <div class="card-header">BCBA</div>
+                <div class="card-value">69,271</div>
+                <div class="card-change positive">+579 (+0.8%)</div>
+            </div>
+            
+            <div class="summary-card">
+                <div class="card-header">BCaBA</div>
+                <div class="card-value">4,002</div>
+                <div class="card-change positive">+63 (+1.6%)</div>
+            </div>
+            
+            <div class="summary-card">
+                <div class="card-header">RBT</div>
+                <div class="card-value">229,127</div>
+                <div class="card-change positive">+4,927 (+2.2%)</div>
+            </div>
+        </div>
+        
+        <!-- Main Data Table -->
+        <div class="main-table">
+            <div class="table-header">
+                <h3><i class="fas fa-table me-2"></i>State-by-State Certificant Changes</h3>
+            </div>
+            <div class="table-responsive">
+                <table id="certificantTable" class="data-table table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>State</th>
+                            <th>Aug Total</th>
+                            <th>Sep Total</th>
+                            <th>Total Change</th>
+                            <th>% Change</th>
+                            <th>BCBA-D Change</th>
+                            <th>BCBA Change</th>
+                            <th>BCaBA Change</th>
+                            <th>RBT Change</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        <tr>
+            <td class="state-cell">FL</td>
+            <td class="number-cell">60,837</td>
+            <td class="number-cell">61,635</td>
+            <td class="change-cell positive">
+                +798
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+1.3%</span>
+            </td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+53</span></td>
+            <td class="cert-change-cell"><span class="positive">+16</span></td>
+            <td class="cert-change-cell"><span class="positive">+729</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">TX</td>
+            <td class="number-cell">29,674</td>
+            <td class="number-cell">30,254</td>
+            <td class="change-cell positive">
+                +580
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+2.0%</span>
+            </td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+35</span></td>
+            <td class="cert-change-cell"><span class="positive">+4</span></td>
+            <td class="cert-change-cell"><span class="positive">+541</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">CA</td>
+            <td class="number-cell">33,997</td>
+            <td class="number-cell">34,563</td>
+            <td class="change-cell positive">
+                +566
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+1.7%</span>
+            </td>
+            <td class="cert-change-cell"><span class="negative">-2</span></td>
+            <td class="cert-change-cell"><span class="positive">+60</span></td>
+            <td class="cert-change-cell"><span class="positive">+2</span></td>
+            <td class="cert-change-cell"><span class="positive">+506</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">NC</td>
+            <td class="number-cell">9,999</td>
+            <td class="number-cell">10,414</td>
+            <td class="change-cell positive">
+                +415
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+4.2%</span>
+            </td>
+            <td class="cert-change-cell"><span class="negative">-1</span></td>
+            <td class="cert-change-cell"><span class="positive">+39</span></td>
+            <td class="cert-change-cell"><span class="positive">+2</span></td>
+            <td class="cert-change-cell"><span class="positive">+375</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">CO</td>
+            <td class="number-cell">7,293</td>
+            <td class="number-cell">7,667</td>
+            <td class="change-cell positive">
+                +374
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+5.1%</span>
+            </td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+22</span></td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+352</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">GA</td>
+            <td class="number-cell">14,186</td>
+            <td class="number-cell">14,484</td>
+            <td class="change-cell positive">
+                +298
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+2.1%</span>
+            </td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+29</span></td>
+            <td class="cert-change-cell"><span class="positive">+3</span></td>
+            <td class="cert-change-cell"><span class="positive">+266</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">IL</td>
+            <td class="number-cell">9,162</td>
+            <td class="number-cell">9,401</td>
+            <td class="change-cell positive">
+                +239
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+2.6%</span>
+            </td>
+            <td class="cert-change-cell"><span class="positive">+1</span></td>
+            <td class="cert-change-cell"><span class="positive">+15</span></td>
+            <td class="cert-change-cell"><span class="positive">+2</span></td>
+            <td class="cert-change-cell"><span class="positive">+221</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">AZ</td>
+            <td class="number-cell">6,874</td>
+            <td class="number-cell">7,058</td>
+            <td class="change-cell positive">
+                +184
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+2.7%</span>
+            </td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+14</span></td>
+            <td class="cert-change-cell"><span class="negative">-1</span></td>
+            <td class="cert-change-cell"><span class="positive">+171</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">UT</td>
+            <td class="number-cell">4,421</td>
+            <td class="number-cell">4,594</td>
+            <td class="change-cell positive">
+                +173
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+3.9%</span>
+            </td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+9</span></td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+164</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">NJ</td>
+            <td class="number-cell">8,054</td>
+            <td class="number-cell">8,202</td>
+            <td class="change-cell positive">
+                +148
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+1.8%</span>
+            </td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+29</span></td>
+            <td class="cert-change-cell"><span class="positive">+3</span></td>
+            <td class="cert-change-cell"><span class="positive">+116</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">MD</td>
+            <td class="number-cell">5,833</td>
+            <td class="number-cell">5,945</td>
+            <td class="change-cell positive">
+                +112
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+1.9%</span>
+            </td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+3</span></td>
+            <td class="cert-change-cell"><span class="positive">+1</span></td>
+            <td class="cert-change-cell"><span class="positive">+108</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">MI</td>
+            <td class="number-cell">6,053</td>
+            <td class="number-cell">6,164</td>
+            <td class="change-cell positive">
+                +111
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+1.8%</span>
+            </td>
+            <td class="cert-change-cell"><span class="positive">+1</span></td>
+            <td class="cert-change-cell"><span class="positive">+31</span></td>
+            <td class="cert-change-cell"><span class="positive">+3</span></td>
+            <td class="cert-change-cell"><span class="positive">+76</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">SC</td>
+            <td class="number-cell">3,469</td>
+            <td class="number-cell">3,574</td>
+            <td class="change-cell positive">
+                +105
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+3.0%</span>
+            </td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+15</span></td>
+            <td class="cert-change-cell"><span class="positive">+2</span></td>
+            <td class="cert-change-cell"><span class="positive">+88</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">TN</td>
+            <td class="number-cell">6,089</td>
+            <td class="number-cell">6,191</td>
+            <td class="change-cell positive">
+                +102
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+1.7%</span>
+            </td>
+            <td class="cert-change-cell"><span class="negative">-1</span></td>
+            <td class="cert-change-cell"><span class="positive">+10</span></td>
+            <td class="cert-change-cell"><span class="positive">+2</span></td>
+            <td class="cert-change-cell"><span class="positive">+91</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">PA</td>
+            <td class="number-cell">7,144</td>
+            <td class="number-cell">7,238</td>
+            <td class="change-cell positive">
+                +94
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+1.3%</span>
+            </td>
+            <td class="cert-change-cell"><span class="positive">+2</span></td>
+            <td class="cert-change-cell"><span class="positive">+18</span></td>
+            <td class="cert-change-cell"><span class="negative">-1</span></td>
+            <td class="cert-change-cell"><span class="positive">+75</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">MO</td>
+            <td class="number-cell">4,211</td>
+            <td class="number-cell">4,303</td>
+            <td class="change-cell positive">
+                +92
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+2.2%</span>
+            </td>
+            <td class="cert-change-cell"><span class="negative">-1</span></td>
+            <td class="cert-change-cell"><span class="positive">+5</span></td>
+            <td class="cert-change-cell"><span class="positive">+1</span></td>
+            <td class="cert-change-cell"><span class="positive">+87</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">IN</td>
+            <td class="number-cell">12,487</td>
+            <td class="number-cell">12,579</td>
+            <td class="change-cell positive">
+                +92
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+0.7%</span>
+            </td>
+            <td class="cert-change-cell"><span class="positive">+1</span></td>
+            <td class="cert-change-cell"><span class="positive">+18</span></td>
+            <td class="cert-change-cell"><span class="positive">+5</span></td>
+            <td class="cert-change-cell"><span class="positive">+68</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">VA</td>
+            <td class="number-cell">6,382</td>
+            <td class="number-cell">6,469</td>
+            <td class="change-cell positive">
+                +87
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+1.4%</span>
+            </td>
+            <td class="cert-change-cell"><span class="positive">+1</span></td>
+            <td class="cert-change-cell"><span class="positive">+3</span></td>
+            <td class="cert-change-cell"><span class="negative">-2</span></td>
+            <td class="cert-change-cell"><span class="positive">+85</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">OH</td>
+            <td class="number-cell">5,917</td>
+            <td class="number-cell">6,002</td>
+            <td class="change-cell positive">
+                +85
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+1.4%</span>
+            </td>
+            <td class="cert-change-cell"><span class="negative">-1</span></td>
+            <td class="cert-change-cell"><span class="positive">+8</span></td>
+            <td class="cert-change-cell"><span class="positive">+2</span></td>
+            <td class="cert-change-cell"><span class="positive">+76</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">NY</td>
+            <td class="number-cell">5,350</td>
+            <td class="number-cell">5,427</td>
+            <td class="change-cell positive">
+                +77
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+1.4%</span>
+            </td>
+            <td class="cert-change-cell"><span class="positive">+2</span></td>
+            <td class="cert-change-cell"><span class="positive">+18</span></td>
+            <td class="cert-change-cell"><span class="positive">+2</span></td>
+            <td class="cert-change-cell"><span class="positive">+55</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">MN</td>
+            <td class="number-cell">1,769</td>
+            <td class="number-cell">1,839</td>
+            <td class="change-cell positive">
+                +70
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+4.0%</span>
+            </td>
+            <td class="cert-change-cell"><span class="positive">+1</span></td>
+            <td class="cert-change-cell"><span class="positive">+16</span></td>
+            <td class="cert-change-cell"><span class="positive">+1</span></td>
+            <td class="cert-change-cell"><span class="positive">+52</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">MA</td>
+            <td class="number-cell">7,392</td>
+            <td class="number-cell">7,461</td>
+            <td class="change-cell positive">
+                +69
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+0.9%</span>
+            </td>
+            <td class="cert-change-cell"><span class="negative">-1</span></td>
+            <td class="cert-change-cell"><span class="positive">+13</span></td>
+            <td class="cert-change-cell"><span class="positive">+1</span></td>
+            <td class="cert-change-cell"><span class="positive">+56</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">IA</td>
+            <td class="number-cell">1,572</td>
+            <td class="number-cell">1,641</td>
+            <td class="change-cell positive">
+                +69
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+4.4%</span>
+            </td>
+            <td class="cert-change-cell"><span class="positive">+1</span></td>
+            <td class="cert-change-cell"><span class="positive">+4</span></td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+64</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">NV</td>
+            <td class="number-cell">3,612</td>
+            <td class="number-cell">3,670</td>
+            <td class="change-cell positive">
+                +58
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+1.6%</span>
+            </td>
+            <td class="cert-change-cell"><span class="negative">-1</span></td>
+            <td class="cert-change-cell"><span class="positive">+4</span></td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+55</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">WA</td>
+            <td class="number-cell">2,790</td>
+            <td class="number-cell">2,839</td>
+            <td class="change-cell positive">
+                +49
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+1.8%</span>
+            </td>
+            <td class="cert-change-cell"><span class="negative">-1</span></td>
+            <td class="cert-change-cell"><span class="positive">+6</span></td>
+            <td class="cert-change-cell"><span class="positive">+3</span></td>
+            <td class="cert-change-cell"><span class="positive">+41</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">NE</td>
+            <td class="number-cell">2,201</td>
+            <td class="number-cell">2,249</td>
+            <td class="change-cell positive">
+                +48
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+2.2%</span>
+            </td>
+            <td class="cert-change-cell"><span class="negative">-4</span></td>
+            <td class="cert-change-cell"><span class="positive">+10</span></td>
+            <td class="cert-change-cell"><span class="positive">+1</span></td>
+            <td class="cert-change-cell"><span class="positive">+41</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">WI</td>
+            <td class="number-cell">2,341</td>
+            <td class="number-cell">2,387</td>
+            <td class="change-cell positive">
+                +46
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+2.0%</span>
+            </td>
+            <td class="cert-change-cell"><span class="negative">-2</span></td>
+            <td class="cert-change-cell"><span class="positive">+5</span></td>
+            <td class="cert-change-cell"><span class="positive">+3</span></td>
+            <td class="cert-change-cell"><span class="positive">+40</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">AL</td>
+            <td class="number-cell">2,740</td>
+            <td class="number-cell">2,785</td>
+            <td class="change-cell positive">
+                +45
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+1.6%</span>
+            </td>
+            <td class="cert-change-cell"><span class="positive">+2</span></td>
+            <td class="cert-change-cell"><span class="positive">+10</span></td>
+            <td class="cert-change-cell"><span class="positive">+1</span></td>
+            <td class="cert-change-cell"><span class="positive">+32</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">CT</td>
+            <td class="number-cell">3,403</td>
+            <td class="number-cell">3,446</td>
+            <td class="change-cell positive">
+                +43
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+1.3%</span>
+            </td>
+            <td class="cert-change-cell"><span class="negative">-1</span></td>
+            <td class="cert-change-cell"><span class="positive">+16</span></td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+28</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">HI</td>
+            <td class="number-cell">2,930</td>
+            <td class="number-cell">2,970</td>
+            <td class="change-cell positive">
+                +40
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+1.4%</span>
+            </td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+5</span></td>
+            <td class="cert-change-cell"><span class="negative">-1</span></td>
+            <td class="cert-change-cell"><span class="positive">+36</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">KY</td>
+            <td class="number-cell">3,089</td>
+            <td class="number-cell">3,129</td>
+            <td class="change-cell positive">
+                +40
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+1.3%</span>
+            </td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+4</span></td>
+            <td class="cert-change-cell"><span class="positive">+1</span></td>
+            <td class="cert-change-cell"><span class="positive">+35</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">OK</td>
+            <td class="number-cell">3,202</td>
+            <td class="number-cell">3,237</td>
+            <td class="change-cell positive">
+                +35
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+1.1%</span>
+            </td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+1</span></td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+34</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">NH</td>
+            <td class="number-cell">1,579</td>
+            <td class="number-cell">1,613</td>
+            <td class="change-cell positive">
+                +34
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+2.2%</span>
+            </td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+5</span></td>
+            <td class="cert-change-cell"><span class="positive">+1</span></td>
+            <td class="cert-change-cell"><span class="positive">+28</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">AR</td>
+            <td class="number-cell">1,509</td>
+            <td class="number-cell">1,543</td>
+            <td class="change-cell positive">
+                +34
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+2.3%</span>
+            </td>
+            <td class="cert-change-cell"><span class="positive">+1</span></td>
+            <td class="cert-change-cell"><span class="positive">+2</span></td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+31</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">LA</td>
+            <td class="number-cell">1,674</td>
+            <td class="number-cell">1,704</td>
+            <td class="change-cell positive">
+                +30
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+1.8%</span>
+            </td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+13</span></td>
+            <td class="cert-change-cell"><span class="positive">+3</span></td>
+            <td class="cert-change-cell"><span class="positive">+14</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">KS</td>
+            <td class="number-cell">1,348</td>
+            <td class="number-cell">1,367</td>
+            <td class="change-cell positive">
+                +19
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+1.4%</span>
+            </td>
+            <td class="cert-change-cell"><span class="positive">+1</span></td>
+            <td class="cert-change-cell"><span class="positive">+5</span></td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+13</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">NM</td>
+            <td class="number-cell">1,427</td>
+            <td class="number-cell">1,444</td>
+            <td class="change-cell positive">
+                +17
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+1.2%</span>
+            </td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+5</span></td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+12</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">RI</td>
+            <td class="number-cell">977</td>
+            <td class="number-cell">990</td>
+            <td class="change-cell positive">
+                +13
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+1.3%</span>
+            </td>
+            <td class="cert-change-cell"><span class="positive">+1</span></td>
+            <td class="cert-change-cell"><span class="positive">+3</span></td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+9</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">MS</td>
+            <td class="number-cell">1,016</td>
+            <td class="number-cell">1,029</td>
+            <td class="change-cell positive">
+                +13
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+1.3%</span>
+            </td>
+            <td class="cert-change-cell"><span class="positive">+1</span></td>
+            <td class="cert-change-cell"><span class="positive">+1</span></td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+11</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">WV</td>
+            <td class="number-cell">590</td>
+            <td class="number-cell">602</td>
+            <td class="change-cell positive">
+                +12
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+2.0%</span>
+            </td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+2</span></td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+10</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">OR</td>
+            <td class="number-cell">955</td>
+            <td class="number-cell">965</td>
+            <td class="change-cell positive">
+                +10
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+1.0%</span>
+            </td>
+            <td class="cert-change-cell"><span class="negative">-1</span></td>
+            <td class="cert-change-cell"><span class="positive">+3</span></td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+8</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">ND</td>
+            <td class="number-cell">313</td>
+            <td class="number-cell">323</td>
+            <td class="change-cell positive">
+                +10
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+3.2%</span>
+            </td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+1</span></td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+9</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">ID</td>
+            <td class="number-cell">824</td>
+            <td class="number-cell">832</td>
+            <td class="change-cell positive">
+                +8
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+1.0%</span>
+            </td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+3</span></td>
+            <td class="cert-change-cell"><span class="positive">+1</span></td>
+            <td class="cert-change-cell"><span class="positive">+4</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">DC</td>
+            <td class="number-cell">286</td>
+            <td class="number-cell">292</td>
+            <td class="change-cell positive">
+                +6
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+2.1%</span>
+            </td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+4</span></td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+2</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">DE</td>
+            <td class="number-cell">558</td>
+            <td class="number-cell">564</td>
+            <td class="change-cell positive">
+                +6
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+1.1%</span>
+            </td>
+            <td class="cert-change-cell"><span class="negative">-1</span></td>
+            <td class="cert-change-cell"><span class="positive">+2</span></td>
+            <td class="cert-change-cell"><span class="positive">+1</span></td>
+            <td class="cert-change-cell"><span class="positive">+4</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">AK</td>
+            <td class="number-cell">325</td>
+            <td class="number-cell">330</td>
+            <td class="change-cell positive">
+                +5
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+1.5%</span>
+            </td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+1</span></td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+4</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">VT</td>
+            <td class="number-cell">382</td>
+            <td class="number-cell">384</td>
+            <td class="change-cell positive">
+                +2
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+0.5%</span>
+            </td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="negative">-1</span></td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+3</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">SD</td>
+            <td class="number-cell">304</td>
+            <td class="number-cell">305</td>
+            <td class="change-cell positive">
+                +1
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+0.3%</span>
+            </td>
+            <td class="cert-change-cell"><span class="negative">-1</span></td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+2</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">MT</td>
+            <td class="number-cell">319</td>
+            <td class="number-cell">320</td>
+            <td class="change-cell positive">
+                +1
+            </td>
+                        <td class="change-cell positive">
+                <span class="positive">+0.3%</span>
+            </td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="positive">+1</span></td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">WY</td>
+            <td class="number-cell">133</td>
+            <td class="number-cell">131</td>
+            <td class="change-cell negative">
+                -2
+            </td>
+                        <td class="change-cell negative">
+                <span class="negative">-1.5%</span>
+            </td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="negative">-2</span></td>
+        </tr>
+        <tr>
+            <td class="state-cell">ME</td>
+            <td class="number-cell">446</td>
+            <td class="number-cell">443</td>
+            <td class="change-cell negative">
+                -3
+            </td>
+                        <td class="change-cell negative">
+                <span class="negative">-0.7%</span>
+            </td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="neutral">0</span></td>
+            <td class="cert-change-cell"><span class="negative">-3</span></td>
+        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p><i class="fas fa-info-circle me-2"></i>Report generated on September 04, 2025 at 01:18 PM</p>
+            <p>Data source: BACB Certificant Count Reports (August 1st vs September 1st, 2025)</p>
+        </div>
+    </div>
+    
+    <!-- jQuery (required for DataTables) -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    
+    
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    
+
+    <!-- Initialize DataTables -->
+    <script>
+        $(document).ready(function() {
+            $('#certificantTable').DataTable({
+                // Basic configuration
+                responsive: true,
+                paging: false,
+                searching: false,
+                info: false,
+                
+                // Export buttons
+                dom: '<"row"<"col-sm-12"B>>' +
+                     '<"row"<"col-sm-12"tr>>',
+                
+                buttons: [
+                    {
+                        extend: 'excel',
+                        text: '<i class="fas fa-file-excel me-2"></i>Export to Excel',
+                        className: 'dt-button',
+                        title: 'BACB Certificant Changes - August 2025'
+                    },
+                    {
+                        extend: 'csv',
+                        text: '<i class="fas fa-file-csv me-2"></i>Export to CSV',
+                        className: 'dt-button',
+                        title: 'BACB Certificant Changes - August 2025'
+                    },
+                    {
+                        extend: 'pdf',
+                        text: '<i class="fas fa-file-pdf me-2"></i>Export to PDF',
+                        className: 'dt-button',
+                        title: 'BACB Certificant Changes - August 2025',
+                        orientation: 'landscape',
+                        pageSize: 'A4'
+                    },
+                    {
+                        extend: 'print',
+                        text: '<i class="fas fa-print me-2"></i>Print',
+                        className: 'dt-button',
+                        title: 'BACB Certificant Changes - August 2025'
+                    }
+                ],
+                
+                // Column definitions
+                columnDefs: [
+                    {
+                        targets: [1, 2], // August and September total columns
+                        type: 'num-fmt',
+                        className: 'text-end'
+                    },
+                    {
+                        targets: [3], // Total Change column
+                        type: 'num-fmt',
+                        className: 'text-end'
+                    },
+                    {
+                        targets: [4], // % Change column
+                        type: 'num-fmt',
+                        className: 'text-end'
+                    },
+                    {
+                        targets: [5, 6, 7, 8], // Individual certification change columns
+                        type: 'num-fmt',
+                        className: 'text-end'
+                    }
+                ],
+                
+                // Initial sorting by change (descending)
+                order: [[3, 'desc']],
+                
+            });
+        });
+    </script>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+    
