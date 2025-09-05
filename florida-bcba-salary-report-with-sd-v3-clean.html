@@ -1,0 +1,1274 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BCBA Jobs Salary Analysis - Florida</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@sgratzl/chartjs-chart-boxplot@4"></script>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            min-height: 100vh;
+            color: #1e293b;
+            line-height: 1.6;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 32px 20px 24px 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #0f172a;
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin: 0 0 12px 0;
+            letter-spacing: -0.5px;
+        }
+        
+        .subtitle {
+            color: #475569;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin: 0 0 8px 0;
+        }
+        
+        .report-meta {
+            margin: 0;
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            padding: 0 20px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+            margin-bottom: 48px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 18px 16px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-icon {
+            width: 32px;
+            height: 32px;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        
+        .stat-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: #1e293b;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .chart-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .chart-container.tall {
+            height: 500px;
+        }
+        
+        .chart-container.medium {
+            height: 400px;
+        }
+        
+        .chart-container.standard {
+            height: 350px;
+        }
+        
+        .data-note {
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 24px;
+            color: #0c4a6e;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .table-responsive {
+            overflow-x: auto;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            margin-top: 16px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        
+        thead {
+            background: #f8fafc;
+        }
+        
+        th {
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            color: #374151;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 0.85rem;
+        }
+        
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        tbody tr:hover {
+            background: #f8fafc;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .badge-premium {
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #f59e0b;
+        }
+        
+        .badge-high {
+            background: #dbeafe;
+            color: #1e40af;
+            border: 1px solid #60a5fa;
+        }
+        
+        .badge-standard {
+            background: #e0e7ff;
+            color: #3730a3;
+            border: 1px solid #a5b4fc;
+        }
+        
+        .positive {
+            color: #059669;
+            font-weight: 600;
+        }
+        
+        .negative {
+            color: #dc2626;
+            font-weight: 600;
+        }
+        
+        /* Supply/Demand Table Styles */
+        .supply-demand-table {
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 0.9rem;
+        }
+
+        .supply-demand-table th {
+            background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
+            color: white;
+            font-weight: 600;
+            padding: 12px 8px;
+            text-align: center;
+            border: 1px solid #1e40af;
+        }
+
+        .supply-demand-table td {
+            padding: 10px 8px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            vertical-align: middle;
+        }
+
+        .supply-demand-table tbody tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        .supply-demand-table tbody tr:hover {
+            background-color: #e0f2fe;
+            transition: background-color 0.2s ease;
+        }
+
+        /* County name styling */
+        .county-name {
+            font-weight: 600;
+            text-align: left !important;
+            padding-left: 12px !important;
+        }
+
+        /* Jobs per BCBA color coding */
+        .jobs-ratio-high {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            color: #92400e;
+            font-weight: 600;
+            border-radius: 4px;
+            padding: 4px 8px;
+        }
+
+        .jobs-ratio-medium {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            color: #1e40af;
+            font-weight: 600;
+            border-radius: 4px;
+            padding: 4px 8px;
+        }
+
+        .jobs-ratio-low {
+            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+            color: #166534;
+            font-weight: 600;
+            border-radius: 4px;
+            padding: 4px 8px;
+        }
+
+        .jobs-ratio-none {
+            color: #64748b;
+            font-style: italic;
+        }
+
+        /* BCBA density color coding */
+        .bcba-density-high {
+            background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+            color: #0c4a6e;
+            font-weight: 600;
+            border-radius: 4px;
+            padding: 4px 8px;
+        }
+
+        .bcba-density-medium {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            color: #0369a1;
+            font-weight: 600;
+            border-radius: 4px;
+            padding: 4px 8px;
+        }
+
+        .bcba-density-low {
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            color: #475569;
+            font-weight: 500;
+            border-radius: 4px;
+            padding: 4px 8px;
+        }
+
+        /* Subtle job count coloring */
+        .job-count-high {
+            color: #dc2626;
+            font-weight: 700;
+        }
+
+        .job-count-medium {
+            color: #ea580c;
+            font-weight: 600;
+        }
+
+        .job-count-low {
+            color: #6b7280;
+            font-weight: 600;
+        }
+
+        /* Subtle BCBA count coloring */
+        .bcba-count-very-high {
+            color: #7c3aed;
+            font-weight: 600;
+        }
+
+        .bcba-count-high {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
+        .bcba-count-medium {
+            color: #059669;
+            font-weight: 600;
+        }
+
+        .bcba-count-low {
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        /* Enhanced table styling for employers and geographic tables */
+        .enhanced-table {
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .enhanced-table th {
+            background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
+            color: white;
+            font-weight: 600;
+            padding: 14px 12px;
+            text-align: center;
+            border: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .enhanced-table td {
+            padding: 12px;
+            text-align: center;
+            border: none;
+            vertical-align: middle;
+            background: white;
+            transition: background-color 0.2s ease;
+        }
+
+        .enhanced-table tbody tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        .enhanced-table tbody tr:hover {
+            background-color: #e0f2fe !important;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        /* Rank styling */
+        .rank-cell {
+            background: linear-gradient(135deg, #f1f5f9, #e2e8f0) !important;
+            font-weight: 700;
+            color: #475569;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .rank-1 { background: linear-gradient(135deg, #fbbf24, #f59e0b) !important; color: white; }
+        .rank-2 { background: linear-gradient(135deg, #9ca3af, #6b7280) !important; color: white; }
+        .rank-3 { background: linear-gradient(135deg, #d97706, #b45309) !important; color: white; }
+
+        /* Company name styling */
+        .company-name {
+            text-align: left !important;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        /* Position count styling */
+        .position-count {
+            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+            color: #1e40af;
+            font-weight: 600;
+            border-radius: 12px;
+            padding: 4px 8px;
+            display: inline-block;
+            min-width: 24px;
+        }
+
+        /* Salary styling */
+        .salary-amount {
+            font-weight: 600;
+            color: #059669;
+        }
+
+        /* Location name styling */
+        .location-name {
+            text-align: left !important;
+            font-weight: 600;
+            color: #1e293b;
+            position: relative;
+        }
+
+        .location-name::before {
+            content: "📍";
+            margin-right: 6px;
+            font-size: 0.8em;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 24px 16px 20px 16px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .container {
+                padding: 0 16px;
+            }
+            
+            .content-section {
+                padding: 24px 20px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .chart-container.tall {
+                height: 350px;
+            }
+            
+            .chart-container.medium {
+                height: 300px;
+            }
+            
+            .chart-container.standard {
+                height: 280px;
+            }
+            
+            th, td {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .content-section {
+                padding: 20px 16px;
+            }
+            
+            .section-title {
+                font-size: 1.25rem;
+            }
+            
+            .chart-container.tall {
+                height: 300px;
+            }
+            
+            .chart-container.medium {
+                height: 250px;
+            }
+            
+            .chart-container.standard {
+                height: 220px;
+            }
+        }
+    </style></head><body>
+
+    <div class="header">
+        <div class="header-content">
+            <h1>BCBA Salary Analysis Report - Florida</h1>
+            <p class="subtitle">Comprehensive Market Analysis for Board Certified Behavior Analysts in Florida</p>
+            <p class="report-meta">Dataset: 340 BCBA Positions in Florida | Staff roles only • Annual salaries | Report Updated: September 5th, 2025</p>
+        </div>
+    </div>
+
+<div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">💼</div>
+                <div class="stat-value">340</div>
+                <div class="stat-label">Total BCBA Positions</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">💰</div>
+                <div class="stat-value">$86,693</div>
+                <div class="stat-label">Average Annual Salary</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📊</div>
+                <div class="stat-value">$85,625</div>
+                <div class="stat-label">Median Salary</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📈</div>
+                <div class="stat-value">$62K-$104K</div>
+                <div class="stat-label">Salary Range</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+                <div class="stat-value">30.6%</div>
+                <div class="stat-label">Salary Transparency Rate</div>
+            </div>
+        </div>
+
+        
+        <div class="content-section">
+            <div class="data-note">
+                ⚠️ <strong>Data Note:</strong> Salary analysis based on 104 BCBA staff positions with complete salary data (from 340 total postings). Hourly postings and senior roles excluded from salary calculations. Outliers included for complete market view. Salaries calculated using midpoint analysis from posted ranges.
+            </div>
+            
+            <h2 class="section-title">
+                📊 Salary Distribution Analysis
+            </h2>
+            <div class="chart-container tall">
+                <canvas id="salaryDistChart"></canvas>
+            </div>
+            
+            <div class="data-note" style="margin-top: 16px;">
+                <strong>Key Percentiles:</strong> 5th: $77,500 • 10th: $80,092 • 25th: $84,000 • Median: $85,625 • 75th: $92,500 • 90th: $92,500 • 95th: $94,694<br>
+                <strong>Salary Bands:</strong> Normal range: $71,250—$105,250 • Non-outlier spread: $75,000—$104,000<br>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">
+                📊 Salary Distribution Box Plot
+            </h2>
+            <div class="chart-container medium">
+                <canvas id="salaryBoxPlot"></canvas>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">
+                🏢 Top Employers by Compensation (3+ Positions)
+            </h2>
+            <div class="table-responsive">
+                <table class="enhanced-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Company</th>
+                            <th>Positions</th>
+                            <th>Average Salary</th>
+                            <th>Salary Range</th>
+                            <th>vs State Avg</th>
+                            <th>Classification</th>
+                        </tr>
+                    </thead>
+      <tbody>
+      <tr>
+        <td><div class="rank-cell rank-1">1</div></td>
+        <td class="company-name">ABA Centers of America</td>
+        <td><span class="position-count">3</span></td>
+        <td class="salary-amount">$92,500</td>
+        <td>$85,000 - $100,000</td>
+        <td class="positive">+6.7%</td>
+        <td><span class="badge badge-competitive">Competitive</span></td>
+      </tr>
+      <tr>
+        <td><div class="rank-cell rank-1">1</div></td>
+        <td class="company-name">ABA Centers of Florida</td>
+        <td><span class="position-count">12</span></td>
+        <td class="salary-amount">$92,500</td>
+        <td>$85,000 - $100,000</td>
+        <td class="positive">+6.7%</td>
+        <td><span class="badge badge-competitive">Competitive</span></td>
+      </tr>
+      <tr>
+        <td><div class="rank-cell rank-3">3</div></td>
+        <td class="company-name">Apollo Behavior</td>
+        <td><span class="position-count">8</span></td>
+        <td class="salary-amount">$90,000</td>
+        <td>$80,000 - $100,000</td>
+        <td class="positive">+3.8%</td>
+        <td><span class="badge badge-competitive">Competitive</span></td>
+      </tr>
+      <tr>
+        <td><div class="rank-cell">4</div></td>
+        <td class="company-name">Hopebridge</td>
+        <td><span class="position-count">5</span></td>
+        <td class="salary-amount">$89,675</td>
+        <td>$70,000 - $118,750</td>
+        <td class="positive">+3.4%</td>
+        <td><span class="badge badge-competitive">Competitive</span></td>
+      </tr>
+      <tr>
+        <td><div class="rank-cell">5</div></td>
+        <td class="company-name">Maxim Healthcare</td>
+        <td><span class="position-count">4</span></td>
+        <td class="salary-amount">$89,375</td>
+        <td>$80,000 - $95,000</td>
+        <td class="positive">+3.1%</td>
+        <td><span class="badge badge-competitive">Competitive</span></td>
+      </tr>
+      <tr>
+        <td><div class="rank-cell">6</div></td>
+        <td class="company-name">Kyo</td>
+        <td><span class="position-count">4</span></td>
+        <td class="salary-amount">$89,125</td>
+        <td>$78,000 - $100,000</td>
+        <td class="positive">+2.8%</td>
+        <td><span class="badge badge-competitive">Competitive</span></td>
+      </tr>
+      <tr>
+        <td><div class="rank-cell">7</div></td>
+        <td class="company-name">Centria Autism</td>
+        <td><span class="position-count">11</span></td>
+        <td class="salary-amount">$85,682</td>
+        <td>$75,000 - $102,000</td>
+        <td class="negative">-1.2%</td>
+        <td><span class="badge badge-competitive">Competitive</span></td>
+      </tr>
+      <tr>
+        <td><div class="rank-cell">8</div></td>
+        <td class="company-name">Acorn Health</td>
+        <td><span class="position-count">8</span></td>
+        <td class="salary-amount">$84,812</td>
+        <td>$75,000 - $93,500</td>
+        <td class="negative">-2.2%</td>
+        <td><span class="badge badge-competitive">Competitive</span></td>
+      </tr>
+      <tr>
+        <td><div class="rank-cell">9</div></td>
+        <td class="company-name">Behavioral Framework</td>
+        <td><span class="position-count">4</span></td>
+        <td class="salary-amount">$84,000</td>
+        <td>$83,000 - $85,000</td>
+        <td class="negative">-3.1%</td>
+        <td><span class="badge badge-competitive">Competitive</span></td>
+      </tr>
+      <tr>
+        <td><div class="rank-cell">10</div></td>
+        <td class="company-name">Cultivate Behavioral Health & Education</td>
+        <td><span class="position-count">3</span></td>
+        <td class="salary-amount">$83,833</td>
+        <td>$78,000 - $90,000</td>
+        <td class="negative">-3.3%</td>
+        <td><span class="badge badge-competitive">Competitive</span></td>
+      </tr>
+      <tr>
+        <td><div class="rank-cell">11</div></td>
+        <td class="company-name">Project Brilliance, LLC</td>
+        <td><span class="position-count">4</span></td>
+        <td class="salary-amount">$82,500</td>
+        <td>$70,000 - $95,000</td>
+        <td class="negative">-4.8%</td>
+        <td><span class="badge badge-competitive">Competitive</span></td>
+      </tr>
+      <tr>
+        <td><div class="rank-cell">12</div></td>
+        <td class="company-name">Step Forward ABA</td>
+        <td><span class="position-count">5</span></td>
+        <td class="salary-amount">$79,500</td>
+        <td>$70,000 - $105,000</td>
+        <td class="negative">-8.3%</td>
+        <td><span class="badge badge-standard">Standard</span></td>
+      </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">
+                📍 Geographic Compensation Analysis
+            </h2>
+            <div class="table-responsive">
+                <table class="enhanced-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>City</th>
+                            <th>Positions</th>
+                            <th>Average Salary</th>
+                            <th>Salary Range</th>
+                            <th>vs State Avg</th>
+                        </tr>
+                    </thead>
+      <tbody>
+      <tr>
+        <td><div class="rank-cell rank-1">1</div></td>
+        <td class="location-name">Celebration</td>
+        <td><span class="position-count">3</span></td>
+        <td class="salary-amount">$92,500</td>
+        <td>$85,000 - $100,000</td>
+        <td class="positive">+6.7%</td>
+      </tr>
+      <tr>
+        <td><div class="rank-cell rank-1">1</div></td>
+        <td class="location-name">Wesley Chapel</td>
+        <td><span class="position-count">3</span></td>
+        <td class="salary-amount">$92,500</td>
+        <td>$85,000 - $100,000</td>
+        <td class="positive">+6.7%</td>
+      </tr>
+      <tr>
+        <td><div class="rank-cell rank-1">1</div></td>
+        <td class="location-name">Jensen Beach</td>
+        <td><span class="position-count">3</span></td>
+        <td class="salary-amount">$92,500</td>
+        <td>$85,000 - $100,000</td>
+        <td class="positive">+6.7%</td>
+      </tr>
+      <tr>
+        <td><div class="rank-cell">4</div></td>
+        <td class="location-name">Tallahassee</td>
+        <td><span class="position-count">8</span></td>
+        <td class="salary-amount">$91,688</td>
+        <td>$70,000 - $110,000</td>
+        <td class="positive">+5.8%</td>
+      </tr>
+      <tr>
+        <td><div class="rank-cell">5</div></td>
+        <td class="location-name">Jacksonville</td>
+        <td><span class="position-count">13</span></td>
+        <td class="salary-amount">$88,269</td>
+        <td>$75,000 - $110,000</td>
+        <td class="positive">+1.8%</td>
+      </tr>
+      <tr>
+        <td><div class="rank-cell">6</div></td>
+        <td class="location-name">Miami</td>
+        <td><span class="position-count">7</span></td>
+        <td class="salary-amount">$88,071</td>
+        <td>$70,000 - $100,000</td>
+        <td class="positive">+1.6%</td>
+      </tr>
+      <tr>
+        <td><div class="rank-cell">7</div></td>
+        <td class="location-name">Tampa</td>
+        <td><span class="position-count">10</span></td>
+        <td class="salary-amount">$87,925</td>
+        <td>$70,000 - $120,000</td>
+        <td class="positive">+1.4%</td>
+      </tr>
+      <tr>
+        <td><div class="rank-cell">8</div></td>
+        <td class="location-name">Orlando</td>
+        <td><span class="position-count">10</span></td>
+        <td class="salary-amount">$87,431</td>
+        <td>$75,000 - $100,000</td>
+        <td class="positive">+0.9%</td>
+      </tr>
+      <tr>
+        <td><div class="rank-cell">9</div></td>
+        <td class="location-name">Brandon</td>
+        <td><span class="position-count">3</span></td>
+        <td class="salary-amount">$86,500</td>
+        <td>$57,000 - $107,000</td>
+        <td class="negative">-0.2%</td>
+      </tr>
+      <tr>
+        <td><div class="rank-cell">10</div></td>
+        <td class="location-name">Palm Beach Gardens</td>
+        <td><span class="position-count">4</span></td>
+        <td class="salary-amount">$82,500</td>
+        <td>$70,000 - $95,000</td>
+        <td class="negative">-4.8%</td>
+      </tr>
+      <tr>
+        <td><div class="rank-cell">11</div></td>
+        <td class="location-name">Brevard County</td>
+        <td><span class="position-count">3</span></td>
+        <td class="salary-amount">$77,500</td>
+        <td>$70,000 - $85,000</td>
+        <td class="negative">-10.6%</td>
+      </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="content-section">
+            <h2 class="section-title">
+                🏛️ County Supply & Demand Analysis
+            </h2>
+            
+            <div class="stats-grid" style="margin-bottom: 24px;">
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-value">271</div>
+                    <div class="stat-label">Mapped Job Postings</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👨‍⚕️</div>
+                    <div class="stat-value">7,993</div>
+                    <div class="stat-label">Total BCBAs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⚖️</div>
+                    <div class="stat-value">0.043</div>
+                    <div class="stat-label">Jobs per BCBA</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🏥</div>
+                    <div class="stat-value">51,979</div>
+                    <div class="stat-label">Total RBTs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📈</div>
+                    <div class="stat-value">6.5:1</div>
+                    <div class="stat-label">RBT-BCBA Ratio</div>
+                </div>
+            </div>
+            
+            <div class="data-note">
+                <strong>Supply-Demand Analysis:</strong> Florida shows a saturated BCBA market with 0.034 jobs per BCBA, indicating strong supply relative to demand. Of 340 total BCBA job postings, 271 (80%) are successfully mapped to 32 counties, with highest activity in major metropolitan areas. 69 jobs remain unmapped due to city-to-county mapping challenges.
+            </div>
+            
+            <div class="table-responsive">
+                <table class="supply-demand-table">
+                    <thead>
+                        <tr>
+                            <th>County</th>
+                            <th>Population</th>
+                            <th>Job<br>Openings</th>
+                            <th>BCBA +<br>BCBA-D</th>
+                            <th>Jobs per<br>BCBA</th>
+                            <th>BCBAs per<br>100k Pop</th>
+                            <th>RBTs</th>
+                            <th>RBT-BCBA<br>Ratio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="county-name">Hillsborough</td>
+                            <td>1,459,762</td>
+                            <td><strong class="job-count-high">36</strong></td>
+                            <td><span class="bcba-count-high">653</span></td>
+                            <td><span class="jobs-ratio-low">0.055</span></td>
+                            <td><span class="bcba-density-medium">44.7</span></td>
+                            <td>2,926</td>
+                            <td><strong>4.48</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="county-name">Duval</td>
+                            <td>995,567</td>
+                            <td><strong class="job-count-high">34</strong></td>
+                            <td><span class="bcba-count-medium">207</span></td>
+                            <td><span class="jobs-ratio-medium">0.164</span></td>
+                            <td><span class="bcba-density-low">20.8</span></td>
+                            <td>515</td>
+                            <td><strong>2.49</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="county-name">Orange</td>
+                            <td>1,429,908</td>
+                            <td><strong class="job-count-high">30</strong></td>
+                            <td><span class="bcba-count-medium">406</span></td>
+                            <td><span class="jobs-ratio-low">0.074</span></td>
+                            <td><span class="bcba-density-medium">28.4</span></td>
+                            <td>1,479</td>
+                            <td><strong>3.64</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="county-name">Broward</td>
+                            <td>1,944,375</td>
+                            <td><strong class="job-count-medium">24</strong></td>
+                            <td><span class="bcba-count-medium">297</span></td>
+                            <td><span class="jobs-ratio-low">0.081</span></td>
+                            <td><span class="bcba-density-low">15.3</span></td>
+                            <td>1,399</td>
+                            <td><strong>4.71</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="county-name">Palm Beach</td>
+                            <td>1,492,191</td>
+                            <td><strong class="job-count-medium">20</strong></td>
+                            <td><span class="bcba-count-high">656</span></td>
+                            <td><span class="jobs-ratio-low">0.030</span></td>
+                            <td><span class="bcba-density-medium">44.0</span></td>
+                            <td>4,286</td>
+                            <td><strong>6.53</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="county-name">Miami-Dade</td>
+                            <td>2,701,767</td>
+                            <td><strong class="job-count-medium">19</strong></td>
+                            <td><span class="bcba-count-very-high">2,630</span></td>
+                            <td><span class="jobs-ratio-low">0.007</span></td>
+                            <td><span class="bcba-density-high">97.3</span></td>
+                            <td>27,124</td>
+                            <td><strong>10.31</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="county-name">Pinellas</td>
+                            <td>959,107</td>
+                            <td><strong class="job-count-medium">13</strong></td>
+                            <td><span class="bcba-count-medium">245</span></td>
+                            <td><span class="jobs-ratio-low">0.053</span></td>
+                            <td><span class="bcba-density-medium">25.5</span></td>
+                            <td>531</td>
+                            <td><strong>2.17</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="county-name">Leon</td>
+                            <td>292,198</td>
+                            <td><strong class="job-count-medium">13</strong></td>
+                            <td><span class="bcba-count-medium">331</span></td>
+                            <td><span class="jobs-ratio-low">0.039</span></td>
+                            <td><span class="bcba-density-high">113.3</span></td>
+                            <td>1,872</td>
+                            <td><strong>5.66</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="county-name">Volusia</td>
+                            <td>553,543</td>
+                            <td><strong class="job-count-low">5</strong></td>
+                            <td><span class="bcba-count-low">108</span></td>
+                            <td><span class="jobs-ratio-low">0.046</span></td>
+                            <td><span class="bcba-density-low">19.5</span></td>
+                            <td>251</td>
+                            <td><strong>2.32</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="county-name">Marion</td>
+                            <td>375,908</td>
+                            <td><strong class="job-count-low">5</strong></td>
+                            <td><span class="bcba-count-medium">411</span></td>
+                            <td><span class="jobs-ratio-low">0.012</span></td>
+                            <td><span class="bcba-density-high">109.3</span></td>
+                            <td>1,439</td>
+                            <td><strong>3.50</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="county-name">Sarasota</td>
+                            <td>434,263</td>
+                            <td><strong class="job-count-low">5</strong></td>
+                            <td><span class="bcba-count-low">183</span></td>
+                            <td><span class="jobs-ratio-low">0.027</span></td>
+                            <td><span class="bcba-density-medium">42.1</span></td>
+                            <td>1,085</td>
+                            <td><strong>5.93</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="county-name">St. Lucie</td>
+                            <td>329,226</td>
+                            <td><strong class="job-count-low">5</strong></td>
+                            <td><span class="bcba-count-medium">264</span></td>
+                            <td><span class="jobs-ratio-low">0.019</span></td>
+                            <td><span class="bcba-density-high">80.2</span></td>
+                            <td>1,652</td>
+                            <td><strong>6.26</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="county-name">Lake</td>
+                            <td>383,956</td>
+                            <td><strong class="job-count-low">5</strong></td>
+                            <td><span class="bcba-count-medium">256</span></td>
+                            <td><span class="jobs-ratio-low">0.020</span></td>
+                            <td><span class="bcba-density-high">66.7</span></td>
+                            <td>625</td>
+                            <td><strong>2.44</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="county-name">Polk</td>
+                            <td>725,046</td>
+                            <td><strong class="job-count-low">4</strong></td>
+                            <td><span class="bcba-count-low">143</span></td>
+                            <td><span class="jobs-ratio-low">0.028</span></td>
+                            <td><span class="bcba-density-low">19.7</span></td>
+                            <td>1,152</td>
+                            <td><strong>8.06</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="county-name">Lee</td>
+                            <td>760,822</td>
+                            <td><strong class="job-count-low">4</strong></td>
+                            <td><span class="bcba-count-low">173</span></td>
+                            <td><span class="jobs-ratio-low">0.023</span></td>
+                            <td><span class="bcba-density-low">22.7</span></td>
+                            <td>1,348</td>
+                            <td><strong>7.79</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="county-name">Seminole</td>
+                            <td>471,826</td>
+                            <td><strong class="job-count-low">4</strong></td>
+                            <td><span class="bcba-count-low">156</span></td>
+                            <td><span class="jobs-ratio-low">0.026</span></td>
+                            <td><span class="bcba-density-medium">33.1</span></td>
+                            <td>1,047</td>
+                            <td><strong>6.71</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="county-name">Nassau</td>
+                            <td>92,701</td>
+                            <td><strong class="job-count-low">2</strong></td>
+                            <td><span class="bcba-count-low">32</span></td>
+                            <td><span class="jobs-ratio-low">0.063</span></td>
+                            <td><span class="bcba-density-medium">34.5</span></td>
+                            <td>69</td>
+                            <td><strong>2.16</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="county-name">Bay</td>
+                            <td>175,216</td>
+                            <td><strong class="job-count-low">2</strong></td>
+                            <td><span class="bcba-count-medium">256</span></td>
+                            <td><span class="jobs-ratio-low">0.008</span></td>
+                            <td><span class="bcba-density-high">146.1</span></td>
+                            <td>625</td>
+                            <td><strong>2.44</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="county-name">Martin</td>
+                            <td>158,431</td>
+                            <td><strong class="job-count-low">2</strong></td>
+                            <td><span class="bcba-count-low">91</span></td>
+                            <td><span class="jobs-ratio-low">0.022</span></td>
+                            <td><span class="bcba-density-high">57.4</span></td>
+                            <td>384</td>
+                            <td><strong>4.22</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="data-note" style="margin-top: 16px;">
+                <strong>Key Insights:</strong> Analysis covers 271 of 340 total job postings (80% mapping success). Duval County (Jacksonville) shows the best jobs-to-BCBA ratio at 0.164. Hillsborough (Tampa) leads with 36 job postings. Miami-Dade has the highest BCBA density (97.3 per 100k) but lowest job ratio (0.007), indicating market saturation.
+            </div>
+        </div>
+    </div>
+
+<script>
+const salaryDistChart = new Chart(document.getElementById('salaryDistChart').getContext('2d'), {
+    type: 'bar',
+    data: {
+        labels: ['$60k-$65k','$65k-$70k','$70k-$75k','$75k-$80k','$80k-$85k','$85k-$90k','$90k-$95k','$95k-$100k','$100k-$105k'],
+        datasets: [{ 
+            label: 'Number of Positions', 
+            data: [3,0,0,6,23,30,37,4,1], 
+            backgroundColor: '#3b82f6', 
+            borderColor: '#2563eb', 
+            borderWidth: 1 
+        }]
+    },
+    options: { 
+        responsive: true, 
+        maintainAspectRatio: false, 
+        plugins: { 
+            title: {
+                display: true, 
+                text: 'BCBA Salary Distribution - Florida', 
+                font: { size: 16, weight: 'bold' } 
+            } 
+        },
+        scales: { 
+            y: {
+                beginAtZero: true, 
+                title: { display: true, text: 'Number of Positions' } 
+            }, 
+            x: {
+                title: { display: true, text: 'Salary Range' } 
+            } 
+        } 
+    }
+});
+
+const salaryBoxPlot = new Chart(document.getElementById('salaryBoxPlot').getContext('2d'), {
+    type: 'boxplot',
+    data: {
+        labels: ['Florida BCBA Annual Salaries'],
+        datasets: [{ 
+            label: 'Salary Distribution', 
+            data: [{
+                min: 62340, 
+                q1: 84000, 
+                median: 85625, 
+                q3: 92500, 
+                max: 104000,
+                outliers: [62340, 62340, 64986]
+            }],
+            backgroundColor: 'rgba(34, 197, 94, 0.2)', 
+            borderColor: 'rgba(34, 197, 94, 0.8)', 
+            borderWidth: 2.5,
+            outlierBackgroundColor: 'rgba(239, 68, 68, 0.8)',
+            outlierBorderColor: 'rgba(220, 38, 38, 1)',
+            outlierRadius: 4,
+            medianColor: 'rgba(15, 118, 110, 1)',
+            medianWidth: 3
+        }]
+    },
+    options: { 
+        indexAxis: 'y', 
+        responsive: true, 
+        maintainAspectRatio: false,
+        layout: {
+            padding: {
+                left: 20,
+                right: 20,
+                top: 20,
+                bottom: 10
+            }
+        },
+        plugins: { 
+            title: {
+                display: true, 
+                text: 'Florida BCBA Salary Distribution', 
+                font: { 
+                    size: 18, 
+                    weight: 'bold',
+                    family: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
+                },
+                color: '#1e293b',
+                padding: {
+                    top: 10,
+                    bottom: 20
+                }
+            },
+            legend: { 
+                display: false 
+            },
+            tooltip: {
+                backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                titleColor: '#f1f5f9',
+                bodyColor: '#e2e8f0',
+                borderColor: 'rgba(59, 130, 246, 0.3)',
+                borderWidth: 1,
+                cornerRadius: 8,
+                displayColors: false,
+                callbacks: {
+                    title: function() {
+                        return 'Salary Distribution';
+                    },
+                    label: function(context) {
+                        const data = context.raw;
+                        return [
+                            `Minimum: $${data.min.toLocaleString()}`,
+                            `Q1 (25th percentile): $${data.q1.toLocaleString()}`,
+                            `Median: $${data.median.toLocaleString()}`,
+                            `Q3 (75th percentile): $${data.q3.toLocaleString()}`,
+                            `Maximum: $${data.max.toLocaleString()}`,
+                            ``,
+                            `Sample: 104 BCBA positions`,
+                            `IQR: $${(data.q3 - data.q1).toLocaleString()}`
+                        ];
+                    }
+                }
+            }
+        },
+        scales: { 
+            x: {
+                min: 50000,
+                max: 120000,
+                grid: { 
+                    color: 'rgba(148, 163, 184, 0.1)',
+                    lineWidth: 1
+                }, 
+                border: {
+                    color: 'rgba(148, 163, 184, 0.3)'
+                },
+                title: { 
+                    display: true, 
+                    text: 'Annual Salary (USD)',
+                    font: {
+                        size: 14,
+                        weight: '600',
+                        family: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
+                    },
+                    color: '#475569',
+                    padding: {
+                        top: 15
+                    }
+                },
+                ticks: { 
+                    callback: function(value) {
+                        return '$' + (value/1000) + 'K';
+                    },
+                    font: {
+                        size: 12,
+                        family: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
+                    },
+                    color: '#64748b',
+                    stepSize: 10000,
+                    padding: 8
+                } 
+            }, 
+            y: {
+                grid: { 
+                    display: false 
+                },
+                border: {
+                    display: false
+                },
+                ticks: {
+                    font: {
+                        size: 14,
+                        weight: '600',
+                        family: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
+                    },
+                    color: '#1e293b',
+                    padding: 15
+                }
+            } 
+        },
+        elements: {
+            boxplot: {
+                borderWidth: 2.5,
+                outlierRadius: 4
+            }
+        }
+    }
+});
+</script>
+</body></html>
