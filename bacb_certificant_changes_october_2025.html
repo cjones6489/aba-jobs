@@ -1684,6 +1684,16 @@
 
     <!-- Initialize DataTables -->
     <script>
+        // Custom sorting for numbers with commas and +/- signs
+        $.fn.dataTable.ext.type.order['formatted-num-pre'] = function (data) {
+            // Extract the text content, removing HTML tags
+            var text = data.replace(/<.*?>/g, '');
+            // Remove commas and plus signs, keep minus signs
+            var num = text.replace(/,/g, '').replace(/\+/g, '');
+            // Parse as float
+            return parseFloat(num) || 0;
+        };
+        
         $(document).ready(function() {
             $('#certificantTable').DataTable({
                 // Basic configuration
@@ -1694,6 +1704,7 @@
                 scrollX: true,
                 scrollCollapse: true,
                 autoWidth: false,
+                ordering: true,  // Explicitly enable sorting
                 
                 // Export buttons
                 dom: '<"row"<"col-sm-12"B>>' +
@@ -1731,24 +1742,24 @@
                 // Column definitions
                 columnDefs: [
                     {
-                        targets: [1, 2], // September and October total columns
-                        type: 'num-fmt',
-                        className: 'text-end'
+                        targets: 0, // State column
+                        type: 'string',
+                        orderable: true
                     },
                     {
-                        targets: [3], // Total Change column
-                        type: 'num-fmt',
-                        className: 'text-end'
+                        targets: [1, 2], // Oct and Nov total columns
+                        type: 'formatted-num',
+                        orderable: true
                     },
                     {
-                        targets: [4], // % Change column
-                        type: 'num-fmt',
-                        className: 'text-end'
+                        targets: [3, 4], // Total Change and % Change columns
+                        type: 'formatted-num',
+                        orderable: true
                     },
                     {
                         targets: [5, 6, 7, 8], // Individual certification change columns
-                        type: 'num-fmt',
-                        className: 'text-end'
+                        type: 'formatted-num',
+                        orderable: true
                     }
                 ],
                 
