@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canadian BCBA Job Market Report — February 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FBF8F1;
+    --warm-white: #FFFFFF;
+    --sand: #F0EBE0;
+    --sand-dark: #DDD5C4;
+    --sage: #8FA68A;
+    --sage-light: #C8D8C4;
+    --sage-pale: #E8F0E6;
+    --terracotta: #C47D5A;
+    --terracotta-light: #F2DDD0;
+    --slate: #3D4A5C;
+    --slate-light: #6B7B8D;
+    --text: #2C3340;
+    --text-muted: #7A8594;
+    --accent-blue: #5B8BA0;
+    --accent-blue-light: #D6E8EF;
+    --accent-gold: #D4A957;
+    --accent-gold-light: #F5ECD4;
+    --border: #E5DFD3;
+    --shadow: rgba(44, 51, 64, 0.06);
+    --shadow-md: rgba(44, 51, 64, 0.1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: linear-gradient(135deg, var(--warm-white) 0%, var(--sand) 50%, var(--sage-pale) 100%);
+    padding: 80px 40px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--sage-light) 0%, transparent 70%);
+    opacity: 0.4;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--terracotta-light) 0%, transparent 70%);
+    opacity: 0.35;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+  .hero-badge {
+    display: inline-block;
+    background: var(--sage);
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    color: var(--slate);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--slate-light);
+    font-weight: 300;
+    max-width: 580px;
+    margin: 0 auto 32px;
+  }
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .hero-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+  .hero-meta-item svg { width: 16px; height: 16px; opacity: 0.6; }
+
+  /* ─── CONTAINER ─── */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  /* ─── KPI STRIP ─── */
+  .kpi-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 16px;
+    margin: -36px auto 48px;
+    padding: 0 24px;
+    max-width: 1200px;
+    position: relative;
+    z-index: 2;
+  }
+  .kpi-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px 16px;
+    text-align: center;
+    box-shadow: 0 4px 20px var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .kpi-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px var(--shadow-md);
+  }
+  .kpi-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem;
+    color: var(--slate);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .kpi-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+  .kpi-card.highlight { border-color: var(--sage); }
+  .kpi-card.highlight .kpi-number { color: var(--sage); }
+
+  /* ─── SECTION ─── */
+  .section { margin-bottom: 56px; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--sand);
+  }
+  .section-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .section-icon svg { width: 20px; height: 20px; }
+  .section-icon.green { background: var(--sage-pale); color: var(--sage); }
+  .section-icon.blue { background: var(--accent-blue-light); color: var(--accent-blue); }
+  .section-icon.gold { background: var(--accent-gold-light); color: var(--accent-gold); }
+  .section-icon.terra { background: var(--terracotta-light); color: var(--terracotta); }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem;
+    color: var(--slate);
+  }
+
+  /* ─── CHART GRID ─── */
+  .chart-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  .chart-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 2px 12px var(--shadow);
+  }
+  .chart-card h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--slate);
+    margin-bottom: 20px;
+  }
+
+  /* ─── BAR CHART ─── */
+  .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .bar-label {
+    width: 130px;
+    flex-shrink: 0;
+    font-size: 0.85rem;
+    color: var(--text);
+    text-align: right;
+    font-weight: 500;
+  }
+  .bar-track {
+    flex: 1;
+    height: 28px;
+    background: var(--sand);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: white;
+    min-width: 36px;
+    transition: width 0.8s ease;
+  }
+  .bar-fill.sage { background: linear-gradient(135deg, var(--sage) 0%, #6D8E68 100%); }
+  .bar-fill.blue { background: linear-gradient(135deg, var(--accent-blue) 0%, #4A7A8E 100%); }
+  .bar-fill.terra { background: linear-gradient(135deg, var(--terracotta) 0%, #A66B4A 100%); }
+  .bar-fill.gold { background: linear-gradient(135deg, var(--accent-gold) 0%, #C09840 100%); }
+  .bar-fill.slate { background: linear-gradient(135deg, var(--slate-light) 0%, var(--slate) 100%); }
+
+  /* ─── DONUT CHART (CSS-based) ─── */
+  .donut-container {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .donut {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .donut-hole {
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+    background: var(--warm-white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+  .donut-hole-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem;
+    color: var(--slate);
+    line-height: 1;
+  }
+  .donut-hole-label {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+  .donut-legend { display: flex; flex-direction: column; gap: 10px; }
+  .donut-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+  }
+  .donut-swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  /* ─── SALARY SECTION ─── */
+  .salary-section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 8px 20px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--slate);
+    margin-bottom: 20px;
+  }
+  .salary-section-label .pill {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .pill-hourly { background: var(--accent-blue-light); color: var(--accent-blue); }
+  .pill-annual { background: var(--sage-pale); color: var(--sage); }
+
+  .salary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .salary-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 0 2px 10px var(--shadow);
+  }
+  .salary-card h4 {
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 16px;
+    color: var(--text-muted);
+  }
+  .salary-range {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+  .salary-range-bar {
+    height: 10px;
+    background: var(--sand);
+    border-radius: 5px;
+    position: relative;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .salary-range-fill {
+    position: absolute;
+    height: 100%;
+    border-radius: 5px;
+  }
+  .salary-big {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem;
+    color: var(--slate);
+    margin-bottom: 4px;
+  }
+  .salary-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+  .salary-divider {
+    border: none;
+    border-top: 2px dashed var(--sand);
+    margin: 36px 0 28px;
+  }
+
+  /* ─── BENEFITS ─── */
+  .benefits-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .benefit-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    color: var(--text);
+    font-weight: 400;
+    transition: all 0.2s;
+  }
+  .benefit-tag:hover {
+    background: var(--sage-pale);
+    border-color: var(--sage-light);
+  }
+  .benefit-count {
+    background: var(--sand);
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 10px;
+  }
+
+  /* ─── JOBS TABLE ─── */
+  .table-wrapper {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px var(--shadow);
+  }
+  .table-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .table-search {
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.88rem;
+    background: var(--cream);
+    width: 260px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .table-search:focus { border-color: var(--sage); }
+  .filter-btns { display: flex; gap: 6px; flex-wrap: wrap; }
+  .filter-btn {
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: var(--warm-white);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--text-muted);
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--sage);
+    color: white;
+    border-color: var(--sage);
+  }
+  .jobs-table { width: 100%; border-collapse: collapse; }
+  .jobs-table thead th {
+    text-align: left;
+    padding: 14px 16px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-muted);
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  .jobs-table tbody tr {
+    border-bottom: 1px solid #F2EDE5;
+    transition: background 0.15s;
+  }
+  .jobs-table tbody tr:hover { background: #FDFBF7; }
+  .jobs-table tbody td {
+    padding: 14px 16px;
+    font-size: 0.88rem;
+    vertical-align: middle;
+  }
+  .source-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  .source-badge.indeed { background: #E8E3F7; color: #5C3FBF; }
+  .source-badge.linkedin { background: #D6E8EF; color: #0A66C2; }
+  .emp-badge {
+    display: inline-block;
+    font-size: 0.76rem;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+  }
+  .emp-badge.full-time { background: var(--sage-pale); color: #4A7A45; }
+  .emp-badge.part-time { background: var(--accent-blue-light); color: #3A6A7E; }
+  .emp-badge.contract { background: var(--accent-gold-light); color: #9A7A30; }
+  .emp-badge.casual { background: var(--terracotta-light); color: #8A5A3A; }
+  .emp-badge.other { background: var(--sand); color: var(--text-muted); }
+  .job-link {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .job-link:hover { color: var(--terracotta); text-decoration: underline; }
+  .table-scroll { max-height: 680px; overflow-y: auto; }
+  .table-scroll::-webkit-scrollbar { width: 6px; }
+  .table-scroll::-webkit-scrollbar-track { background: var(--cream); }
+  .table-scroll::-webkit-scrollbar-thumb { background: var(--sand-dark); border-radius: 3px; }
+
+  /* ─── TOP EMPLOYERS ─── */
+  .employers-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+  }
+  .employer-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    box-shadow: 0 1px 6px var(--shadow);
+  }
+  .employer-rank {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: var(--sage-pale);
+    color: var(--sage);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+  .employer-info { flex: 1; }
+  .employer-name { font-weight: 600; font-size: 0.92rem; }
+  .employer-count { font-size: 0.8rem; color: var(--text-muted); }
+
+  /* ─── CITY DETAIL CARDS ─── */
+  .city-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 18px;
+  }
+  .city-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 24px;
+    box-shadow: 0 2px 10px var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .city-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px var(--shadow-md);
+  }
+  .city-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+  .city-card-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    color: var(--slate);
+  }
+  .city-card-prov {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    background: var(--sand);
+    padding: 2px 10px;
+    border-radius: 10px;
+  }
+  .city-card-count {
+    font-size: 0.85rem;
+    color: var(--sage);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .city-card-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+  }
+  .city-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .city-stat-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--text-muted);
+  }
+  .city-stat-value {
+    font-size: 0.88rem;
+    color: var(--text);
+  }
+  .city-stat-note {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  /* ─── FOOTER ─── */
+  .report-footer {
+    text-align: center;
+    padding: 40px 24px;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 700px) {
+    .hero { padding: 50px 20px 40px; }
+    .kpi-strip { grid-template-columns: 1fr 1fr; margin-top: -24px; }
+    .chart-grid { grid-template-columns: 1fr; }
+    .bar-label { width: 90px; font-size: 0.78rem; }
+    .table-controls { flex-direction: column; align-items: stretch; }
+    .table-search { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<header class="hero">
+  <div class="hero-content">
+    <h1>Canadian BCBA<br>Job Market Report</h1>
+    <p class="hero-subtitle">A comprehensive analysis of Board Certified Behavior Analyst job listings across Canada from Indeed and LinkedIn</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        February 12, 2026
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════ KPI STRIP ═══════════════ -->
+<div class="kpi-strip">
+  <div class="kpi-card highlight">
+    <div class="kpi-number">42</div>
+    <div class="kpi-label">Total Listings</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-number">5</div>
+    <div class="kpi-label">Provinces</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-number">35</div>
+    <div class="kpi-label">Unique Employers</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-number">$67</div>
+    <div class="kpi-label">Avg Hourly Rate</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-number">$80K</div>
+    <div class="kpi-label">Avg Annual Salary</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-number">11</div>
+    <div class="kpi-label">Salary Undisclosed</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ═══════════════ GEOGRAPHIC DISTRIBUTION ═══════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon green">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <h2 class="section-title">Geographic Distribution</h2>
+    </div>
+
+    <div class="chart-grid">
+      <!-- Province Breakdown Bar Chart -->
+      <div class="chart-card">
+        <h3>Listings by Province</h3>
+        <div class="bar-row">
+          <span class="bar-label">Ontario</span>
+          <div class="bar-track"><div class="bar-fill sage" style="width:100%">24</div></div>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">British Columbia</span>
+          <div class="bar-track"><div class="bar-fill blue" style="width:37.5%">9</div></div>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Alberta</span>
+          <div class="bar-track"><div class="bar-fill terra" style="width:25%">6</div></div>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">New Brunswick</span>
+          <div class="bar-track"><div class="bar-fill gold" style="width:8.3%">2</div></div>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Prince Edward Is.</span>
+          <div class="bar-track"><div class="bar-fill slate" style="width:4.2%">1</div></div>
+        </div>
+      </div>
+
+      <!-- Employment Type Donut (CSS conic-gradient) -->
+      <div class="chart-card">
+        <h3>Employment Type Breakdown</h3>
+        <div class="donut-container">
+          <!-- 40.5% full-time, 33.3% part-time, 14.3% not specified, 7.1% contract, 4.8% casual -->
+          <div class="donut" style="background: conic-gradient(
+            #8FA68A 0deg 145.8deg,
+            #5B8BA0 145.8deg 265.7deg,
+            #DDD5C4 265.7deg 317.1deg,
+            #D4A957 317.1deg 342.9deg,
+            #C47D5A 342.9deg 360deg
+          );">
+            <div class="donut-hole">
+              <div class="donut-hole-number">42</div>
+              <div class="donut-hole-label">Jobs</div>
+            </div>
+          </div>
+          <div class="donut-legend">
+            <div class="donut-legend-item"><div class="donut-swatch" style="background:#8FA68A"></div>Full-time — 17 (40%)</div>
+            <div class="donut-legend-item"><div class="donut-swatch" style="background:#5B8BA0"></div>Part-time — 14 (33%)</div>
+            <div class="donut-legend-item"><div class="donut-swatch" style="background:#DDD5C4"></div>Not specified — 6 (14%)</div>
+            <div class="donut-legend-item"><div class="donut-swatch" style="background:#D4A957"></div>Contract — 3 (7%)</div>
+            <div class="donut-legend-item"><div class="donut-swatch" style="background:#C47D5A"></div>Casual — 2 (5%)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Source Donut (CSS conic-gradient) -->
+      <div class="chart-card">
+        <h3>Listings by Source</h3>
+        <div class="donut-container">
+          <!-- 66.7% Indeed, 33.3% LinkedIn -->
+          <div class="donut" style="background: conic-gradient(
+            #8B7CC8 0deg 240deg,
+            #0A66C2 240deg 360deg
+          );">
+            <div class="donut-hole">
+              <div class="donut-hole-number">42</div>
+              <div class="donut-hole-label">Total</div>
+            </div>
+          </div>
+          <div class="donut-legend">
+            <div class="donut-legend-item"><div class="donut-swatch" style="background:#8B7CC8"></div>Indeed — 28 (67%)</div>
+            <div class="donut-legend-item"><div class="donut-swatch" style="background:#0A66C2"></div>LinkedIn — 14 (33%)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Top Cities Bar Chart -->
+      <div class="chart-card">
+        <h3>Top Cities</h3>
+        <div class="bar-row">
+          <span class="bar-label">Greater Toronto Area</span>
+          <div class="bar-track"><div class="bar-fill sage" style="width:100%">10</div></div>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Ottawa</span>
+          <div class="bar-track"><div class="bar-fill blue" style="width:40%">4</div></div>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Calgary</span>
+          <div class="bar-track"><div class="bar-fill terra" style="width:40%">4</div></div>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Napanee</span>
+          <div class="bar-track"><div class="bar-fill gold" style="width:30%">3</div></div>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Vancouver</span>
+          <div class="bar-track"><div class="bar-fill slate" style="width:20%">2</div></div>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Surrey</span>
+          <div class="bar-track"><div class="bar-fill sage" style="width:20%">2</div></div>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Hamilton</span>
+          <div class="bar-track"><div class="bar-fill blue" style="width:20%">2</div></div>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Edmonton</span>
+          <div class="bar-track"><div class="bar-fill terra" style="width:20%">2</div></div>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Lincoln, NB</span>
+          <div class="bar-track"><div class="bar-fill gold" style="width:20%">2</div></div>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Niagara Region</span>
+          <div class="bar-track"><div class="bar-fill slate" style="width:20%">2</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ TOP CITIES DETAIL ═══════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon terra">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <h2 class="section-title">Top Cities — Detail</h2>
+    </div>
+
+    <div class="city-detail-grid">
+      <!-- GTA -->
+      <div class="city-card">
+        <div class="city-card-header">
+          <div class="city-card-name">Greater Toronto Area</div>
+          <div class="city-card-prov">Ontario</div>
+        </div>
+        <div class="city-card-count">10 listings</div>
+        <div class="city-card-stats">
+          <div class="city-stat">
+            <span class="city-stat-label">Employment</span>
+            <span class="city-stat-value">6 full-time · 2 part-time · 2 unspecified</span>
+          </div>
+          <div class="city-stat">
+            <span class="city-stat-label">Avg hourly</span>
+            <span class="city-stat-value">$71/hr <span class="city-stat-note">(3 postings · $50–$92)</span></span>
+          </div>
+          <div class="city-stat">
+            <span class="city-stat-label">Avg annual</span>
+            <span class="city-stat-value">$79,762 <span class="city-stat-note">(6 postings · $70K–$87K)</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ottawa -->
+      <div class="city-card">
+        <div class="city-card-header">
+          <div class="city-card-name">Ottawa</div>
+          <div class="city-card-prov">Ontario</div>
+        </div>
+        <div class="city-card-count">4 listings</div>
+        <div class="city-card-stats">
+          <div class="city-stat">
+            <span class="city-stat-label">Employment</span>
+            <span class="city-stat-value">1 full-time · 1 part-time · 1 casual · 1 contract</span>
+          </div>
+          <div class="city-stat">
+            <span class="city-stat-label">Avg hourly</span>
+            <span class="city-stat-value">$77/hr <span class="city-stat-note">(2 postings · $70–$84)</span></span>
+          </div>
+          <div class="city-stat">
+            <span class="city-stat-label">Avg annual</span>
+            <span class="city-stat-value">$83,750 <span class="city-stat-note">(2 postings · $82.5K–$85K)</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Calgary -->
+      <div class="city-card">
+        <div class="city-card-header">
+          <div class="city-card-name">Calgary</div>
+          <div class="city-card-prov">Alberta</div>
+        </div>
+        <div class="city-card-count">4 listings</div>
+        <div class="city-card-stats">
+          <div class="city-stat">
+            <span class="city-stat-label">Employment</span>
+            <span class="city-stat-value">2 part-time · 1 full-time · 1 contract</span>
+          </div>
+          <div class="city-stat">
+            <span class="city-stat-label">Avg hourly</span>
+            <span class="city-stat-value">$26/hr <span class="city-stat-note">(1 posting — support-level role)</span></span>
+          </div>
+          <div class="city-stat">
+            <span class="city-stat-label">Avg annual</span>
+            <span class="city-stat-value">— <span class="city-stat-note">no annual data disclosed</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Napanee -->
+      <div class="city-card">
+        <div class="city-card-header">
+          <div class="city-card-name">Napanee</div>
+          <div class="city-card-prov">Ontario</div>
+        </div>
+        <div class="city-card-count">3 listings</div>
+        <div class="city-card-stats">
+          <div class="city-stat">
+            <span class="city-stat-label">Employment</span>
+            <span class="city-stat-value">2 full-time · 1 part-time</span>
+          </div>
+          <div class="city-stat">
+            <span class="city-stat-label">Avg hourly</span>
+            <span class="city-stat-value">— <span class="city-stat-note">no hourly data disclosed</span></span>
+          </div>
+          <div class="city-stat">
+            <span class="city-stat-label">Avg annual</span>
+            <span class="city-stat-value">$73,000 <span class="city-stat-note">(1 posting)</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vancouver -->
+      <div class="city-card">
+        <div class="city-card-header">
+          <div class="city-card-name">Vancouver</div>
+          <div class="city-card-prov">British Columbia</div>
+        </div>
+        <div class="city-card-count">2 listings</div>
+        <div class="city-card-stats">
+          <div class="city-stat">
+            <span class="city-stat-label">Employment</span>
+            <span class="city-stat-value">1 full-time · 1 part-time</span>
+          </div>
+          <div class="city-stat">
+            <span class="city-stat-label">Avg hourly</span>
+            <span class="city-stat-value">$62/hr <span class="city-stat-note">(1 posting)</span></span>
+          </div>
+          <div class="city-stat">
+            <span class="city-stat-label">Avg annual</span>
+            <span class="city-stat-value">— <span class="city-stat-note">no annual data disclosed</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hamilton -->
+      <div class="city-card">
+        <div class="city-card-header">
+          <div class="city-card-name">Hamilton</div>
+          <div class="city-card-prov">Ontario</div>
+        </div>
+        <div class="city-card-count">2 listings</div>
+        <div class="city-card-stats">
+          <div class="city-stat">
+            <span class="city-stat-label">Employment</span>
+            <span class="city-stat-value">1 full-time · 1 part-time</span>
+          </div>
+          <div class="city-stat">
+            <span class="city-stat-label">Avg hourly</span>
+            <span class="city-stat-value">$70/hr <span class="city-stat-note">(1 posting)</span></span>
+          </div>
+          <div class="city-stat">
+            <span class="city-stat-label">Avg annual</span>
+            <span class="city-stat-value">— <span class="city-stat-note">no annual data disclosed</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Edmonton -->
+      <div class="city-card">
+        <div class="city-card-header">
+          <div class="city-card-name">Edmonton</div>
+          <div class="city-card-prov">Alberta</div>
+        </div>
+        <div class="city-card-count">2 listings</div>
+        <div class="city-card-stats">
+          <div class="city-stat">
+            <span class="city-stat-label">Employment</span>
+            <span class="city-stat-value">1 full-time · 1 casual</span>
+          </div>
+          <div class="city-stat">
+            <span class="city-stat-label">Avg hourly</span>
+            <span class="city-stat-value">$30/hr <span class="city-stat-note">(1 posting — support-level role)</span></span>
+          </div>
+          <div class="city-stat">
+            <span class="city-stat-label">Avg annual</span>
+            <span class="city-stat-value">— <span class="city-stat-note">no annual data disclosed</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lincoln NB -->
+      <div class="city-card">
+        <div class="city-card-header">
+          <div class="city-card-name">Lincoln</div>
+          <div class="city-card-prov">New Brunswick</div>
+        </div>
+        <div class="city-card-count">2 listings</div>
+        <div class="city-card-stats">
+          <div class="city-stat">
+            <span class="city-stat-label">Employment</span>
+            <span class="city-stat-value">2 part-time</span>
+          </div>
+          <div class="city-stat">
+            <span class="city-stat-label">Avg hourly</span>
+            <span class="city-stat-value">$95/hr <span class="city-stat-note">(2 postings · $90–$100)</span></span>
+          </div>
+          <div class="city-stat">
+            <span class="city-stat-label">Avg annual</span>
+            <span class="city-stat-value">— <span class="city-stat-note">no annual data disclosed</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ SALARY ANALYSIS — HOURLY ═══════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon blue">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <h2 class="section-title">Salary Analysis — Hourly Positions</h2>
+    </div>
+
+    <div class="salary-section-label">
+      <span class="pill pill-hourly">Hourly</span>
+      18 positions report hourly compensation
+    </div>
+
+    <div class="salary-grid">
+      <!-- National Hourly Midpoint -->
+      <div class="salary-card" style="grid-column: 1 / -1;">
+        <h4>National Hourly Rate Overview</h4>
+        <div class="salary-range">
+          <span>Low: $26/hr</span>
+          <span style="color:var(--accent-blue);font-weight:600">Median: $62/hr</span>
+          <span>High: $162/hr</span>
+        </div>
+        <div class="salary-range-bar">
+          <div class="salary-range-fill" style="left:0%;width:100%;background:linear-gradient(90deg,var(--accent-blue-light),var(--accent-blue),var(--slate))"></div>
+        </div>
+        <div class="salary-big">$67/hr</div>
+        <div class="salary-desc">Average across 18 hourly postings with salary data</div>
+      </div>
+
+      <!-- Ontario Hourly -->
+      <div class="salary-card">
+        <h4>🍁 Ontario</h4>
+        <div class="salary-range"><span>$45/hr</span><span>$92/hr</span></div>
+        <div class="salary-range-bar">
+          <div class="salary-range-fill" style="left:14%;width:48%;background:linear-gradient(90deg,var(--sage-light),var(--sage))"></div>
+        </div>
+        <div class="salary-big">$69/hr</div>
+        <div class="salary-desc">7 postings · Median: $70/hr</div>
+      </div>
+
+      <!-- BC Hourly -->
+      <div class="salary-card">
+        <h4>🌲 British Columbia</h4>
+        <div class="salary-range"><span>$45/hr</span><span>$162/hr</span></div>
+        <div class="salary-range-bar">
+          <div class="salary-range-fill" style="left:14%;width:86%;background:linear-gradient(90deg,var(--accent-blue-light),var(--accent-blue))"></div>
+        </div>
+        <div class="salary-big">$71/hr</div>
+        <div class="salary-desc">6 postings · Median: $55/hr · Outlier: So Social Clinic at $162/hr</div>
+      </div>
+
+      <!-- NB Hourly -->
+      <div class="salary-card">
+        <h4>🦞 New Brunswick</h4>
+        <div class="salary-range"><span>$90/hr</span><span>$100/hr</span></div>
+        <div class="salary-range-bar">
+          <div class="salary-range-fill" style="left:47%;width:8%;background:linear-gradient(90deg,var(--accent-gold-light),var(--accent-gold))"></div>
+        </div>
+        <div class="salary-big">$95/hr</div>
+        <div class="salary-desc">2 postings · Both from Circle Care Services</div>
+      </div>
+
+      <!-- Alberta Hourly -->
+      <div class="salary-card">
+        <h4>⛰️ Alberta</h4>
+        <div class="salary-range"><span>$26/hr</span><span>$30/hr</span></div>
+        <div class="salary-range-bar">
+          <div class="salary-range-fill" style="left:0%;width:3%;background:linear-gradient(90deg,var(--terracotta-light),var(--terracotta))"></div>
+        </div>
+        <div class="salary-big">$28/hr</div>
+        <div class="salary-desc">2 postings · May reflect support-level rather than senior BCBA roles</div>
+      </div>
+
+      <!-- PEI Hourly -->
+      <div class="salary-card">
+        <h4>🏝️ Prince Edward Island</h4>
+        <div class="salary-range"><span>$40/hr</span><span>$49/hr</span></div>
+        <div class="salary-range-bar">
+          <div class="salary-range-fill" style="left:10%;width:4%;background:linear-gradient(90deg,var(--slate-light),var(--slate))"></div>
+        </div>
+        <div class="salary-big">$44/hr</div>
+        <div class="salary-desc">1 posting · Health PEI (government role)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ SALARY ANALYSIS — ANNUAL ═══════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon gold">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+      <h2 class="section-title">Salary Analysis — Annual Positions</h2>
+    </div>
+
+    <div class="salary-section-label">
+      <span class="pill pill-annual">Annual</span>
+      13 positions report annual salary
+    </div>
+
+    <div class="salary-grid">
+      <!-- National Annual Midpoint -->
+      <div class="salary-card" style="grid-column: 1 / -1;">
+        <h4>National Annual Salary Overview</h4>
+        <div class="salary-range">
+          <span>Low: $70,000</span>
+          <span style="color:var(--sage);font-weight:600">Median: $82,500</span>
+          <span>High: $91,562</span>
+        </div>
+        <div class="salary-range-bar">
+          <div class="salary-range-fill" style="left:0%;width:100%;background:linear-gradient(90deg,var(--sage-pale),var(--sage),var(--slate))"></div>
+        </div>
+        <div class="salary-big">$80,283</div>
+        <div class="salary-desc">Average across 13 annual postings with salary data</div>
+      </div>
+
+      <!-- Ontario Annual -->
+      <div class="salary-card">
+        <h4>🍁 Ontario</h4>
+        <div class="salary-range"><span>$70,000</span><span>$91,562</span></div>
+        <div class="salary-range-bar">
+          <div class="salary-range-fill" style="left:0%;width:100%;background:linear-gradient(90deg,var(--sage-light),var(--sage))"></div>
+        </div>
+        <div class="salary-big">$80,933</div>
+        <div class="salary-desc">12 postings · Median: $83,750</div>
+      </div>
+
+      <!-- BC Annual -->
+      <div class="salary-card">
+        <h4>🌲 British Columbia</h4>
+        <div class="salary-range"><span>$65,149</span><span>$79,802</span></div>
+        <div class="salary-range-bar">
+          <div class="salary-range-fill" style="left:0%;width:46%;background:linear-gradient(90deg,var(--accent-blue-light),var(--accent-blue))"></div>
+        </div>
+        <div class="salary-big">$72,476</div>
+        <div class="salary-desc">1 posting with annual data (CBI Consultants)</div>
+      </div>
+    </div>
+
+    <!-- Salary Note -->
+    <div style="margin-top:20px;padding:16px 20px;background:var(--sand);border-radius:10px;font-size:0.84rem;color:var(--text-muted);line-height:1.7;">
+      <strong style="color:var(--slate)">📊 Note on salary data:</strong> 11 of 42 listings (26%) do not disclose compensation. Hourly and annual figures are analyzed separately. For listings with a salary range, the middle of the range is used; for "from $X" listings with only a floor, that value is used. Alberta's hourly roles (~$28/hr) may reflect support-level positions rather than senior BCBA roles.
+    </div>
+  </div>
+
+  <!-- ═══════════════ BENEFITS ═══════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon green">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </div>
+      <h2 class="section-title">Most Offered Benefits</h2>
+    </div>
+
+    <div class="benefits-grid">
+      <div class="benefit-tag">🦷 Dental care <span class="benefit-count">10</span></div>
+      <div class="benefit-tag">📅 Flexible schedule <span class="benefit-count">9</span></div>
+      <div class="benefit-tag">🏖️ Paid time off <span class="benefit-count">8</span></div>
+      <div class="benefit-tag">🛡️ Life insurance <span class="benefit-count">8</span></div>
+      <div class="benefit-tag">🏥 Extended health care <span class="benefit-count">7</span></div>
+      <div class="benefit-tag">👔 Casual dress <span class="benefit-count">7</span></div>
+      <div class="benefit-tag">👁️ Vision care <span class="benefit-count">6</span></div>
+      <div class="benefit-tag">🧠 Employee assistance <span class="benefit-count">5</span></div>
+      <div class="benefit-tag">🅿️ On-site parking <span class="benefit-count">5</span></div>
+      <div class="benefit-tag">🚗 Mileage reimbursement <span class="benefit-count">4</span></div>
+      <div class="benefit-tag">📚 Tuition reimbursement <span class="benefit-count">3</span></div>
+      <div class="benefit-tag">🏠 Work from home <span class="benefit-count">3</span></div>
+      <div class="benefit-tag">♿ Disability insurance <span class="benefit-count">3</span></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ TOP EMPLOYERS ═══════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon terra">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <h2 class="section-title">Top Employers by Listing Count</h2>
+    </div>
+
+    <div class="employers-list">
+      <div class="employer-card">
+        <div class="employer-rank">1</div>
+        <div class="employer-info">
+          <div class="employer-name">Centre for Autism Services Alberta</div>
+          <div class="employer-count">3 listings — Alberta</div>
+        </div>
+      </div>
+      <div class="employer-card">
+        <div class="employer-rank">2</div>
+        <div class="employer-info">
+          <div class="employer-name">Bethesda Services</div>
+          <div class="employer-count">2 listings — Ontario</div>
+        </div>
+      </div>
+      <div class="employer-card">
+        <div class="employer-rank">2</div>
+        <div class="employer-info">
+          <div class="employer-name">Reach Child & Youth Dev. Society</div>
+          <div class="employer-count">2 listings — British Columbia</div>
+        </div>
+      </div>
+      <div class="employer-card">
+        <div class="employer-rank">2</div>
+        <div class="employer-info">
+          <div class="employer-name">Circle Care Services</div>
+          <div class="employer-count">2 listings — New Brunswick</div>
+        </div>
+      </div>
+      <div class="employer-card">
+        <div class="employer-rank">2</div>
+        <div class="employer-info">
+          <div class="employer-name">Monarch House</div>
+          <div class="employer-count">2 listings — Ontario</div>
+        </div>
+      </div>
+      <div class="employer-card">
+        <div class="employer-rank">2</div>
+        <div class="employer-info">
+          <div class="employer-name">Algonquin & Lakeshore Catholic DSB</div>
+          <div class="employer-count">2 listings — Ontario</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ ALL LISTINGS TABLE ═══════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon green">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+      </div>
+      <h2 class="section-title">All Job Listings</h2>
+    </div>
+
+    <div class="table-wrapper">
+      <div class="table-controls">
+        <input type="text" class="table-search" placeholder="Search positions, companies…" id="searchInput" oninput="filterTable()">
+        <div class="filter-btns">
+          <button class="filter-btn active" onclick="filterProvince(this,'all')">All</button>
+          <button class="filter-btn" onclick="filterProvince(this,'Ontario')">Ontario</button>
+          <button class="filter-btn" onclick="filterProvince(this,'British Columbia')">BC</button>
+          <button class="filter-btn" onclick="filterProvince(this,'Alberta')">Alberta</button>
+          <button class="filter-btn" onclick="filterProvince(this,'New Brunswick')">NB</button>
+          <button class="filter-btn" onclick="filterProvince(this,'Prince Edward Island')">PEI</button>
+        </div>
+      </div>
+      <div class="table-scroll">
+        <table class="jobs-table" id="jobsTable">
+          <thead>
+            <tr>
+              <th>Source</th>
+              <th>Position</th>
+              <th>Company</th>
+              <th>City</th>
+              <th>Province</th>
+              <th>Type</th>
+              <th>Salary</th>
+              <th>Posted</th>
+            </tr>
+          </thead>
+          <tbody id="jobsBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="report-footer">
+  <p>BCBA Canadian Job Market Report — Data sourced from Indeed & LinkedIn — Generated February 12, 2026</p>
+  <p style="margin-top:6px;font-size:0.75rem;opacity:0.7">42 listings across 5 provinces from 35 unique employers</p>
+</footer>
+
+<script>
+const jobs = [
+  {s:"indeed",co:"Bethesda Services",pos:"Full Time Behaviour Consultant - BSS- RBA",city:"Vineland",prov:"Ontario",emp:"other",sal:"from $89,565 annual",date:"2026-02-12",url:"https://www.indeed.com/viewjob?jk=cd3365930331bd02"},
+  {s:"linkedin",co:"Reach Child and Youth Development Society",pos:"Board Certified Behavior Analyst",city:"Vancouver",prov:"British Columbia",emp:"full-time",sal:"$50–$75/hr",date:"2026-02-12",url:"https://ca.linkedin.com/jobs/view/board-certified-behavior-analyst-at-reach-child-and-youth-development-society-4371553492"},
+  {s:"linkedin",co:"Circle Care Services",pos:"Assessing BCBA",city:"Lincoln",prov:"New Brunswick",emp:"part-time",sal:"from $90/hr",date:"2026-02-12",url:"https://ca.linkedin.com/jobs/view/assessing-bcba-board-certified-behavior-analyst-at-circle-care-services-4371669277"},
+  {s:"linkedin",co:"Health PEI",pos:"Program Officer (Behavioral Analyst)",city:"Charlottetown",prov:"Prince Edward Island",emp:"full-time",sal:"$40–$49/hr",date:"2026-02-11",url:"https://ca.linkedin.com/jobs/view/program-officer-behavioral-analyst-at-health-pei-4371189297"},
+  {s:"indeed",co:"Reach Child and Youth Dev. Society",pos:"Board Certified Behavior Analyst",city:"Surrey",prov:"British Columbia",emp:"part-time",sal:"$50–$75/hr",date:"2026-02-11",url:"https://www.indeed.com/viewjob?jk=817b46e9be284d6a"},
+  {s:"indeed",co:"Gateway Holistic Care Group",pos:"Board Certified Behavior Analyst (BCBA)",city:"Edmonton",prov:"Alberta",emp:"casual",sal:"Not disclosed",date:"2026-02-11",url:"https://www.indeed.com/viewjob?jk=f5452d7ff0383183"},
+  {s:"indeed",co:"Fraser Valley Child Dev. Centre",pos:"Behaviour Consultant",city:"Abbotsford",prov:"British Columbia",emp:"part-time",sal:"$41–$51/hr",date:"2026-02-10",url:"https://www.indeed.com/viewjob?jk=f95528e2c802b3a0"},
+  {s:"indeed",co:"Circle Care Services",pos:"Assessing BCBA",city:"Lincoln",prov:"New Brunswick",emp:"part-time",sal:"$90–$110/hr",date:"2026-02-10",url:"https://www.indeed.com/viewjob?jk=8631a25bc2082a92"},
+  {s:"indeed",co:"Maximum Potential Autism Services",pos:"Behaviour Analyst (RBA/BCBA)",city:"Kanata",prov:"Ontario",emp:"part-time",sal:"$75K–$95K/yr",date:"2026-02-09",url:"https://www.indeed.com/viewjob?jk=189de30e4e57ef28"},
+  {s:"indeed",co:"Canada Ututoring Learning Institute",pos:"Board Certified Behavior Analyst (BCBA)",city:"Markham",prov:"Ontario",emp:"full-time",sal:"$50–$90/hr",date:"2026-02-08",url:"https://www.indeed.com/viewjob?jk=385ec11641fd67b3"},
+  {s:"indeed",co:"So Social Clinic",pos:"Board Certified Behavior Analyst (BCBA)",city:"North Vancouver",prov:"British Columbia",emp:"part-time",sal:"$125–$200/hr",date:"2026-02-08",url:"https://www.indeed.com/viewjob?jk=7495b839d8497f22"},
+  {s:"linkedin",co:"The Hullabaloo",pos:"Registered Behaviour Analyst",city:"Mississauga",prov:"Ontario",emp:"full-time",sal:"from $70K/yr",date:"2026-02-06",url:"https://ca.linkedin.com/jobs/view/registered-behaviour-analyst-at-the-hullabaloo-4369540890"},
+  {s:"linkedin",co:"Family Centred Practices Group",pos:"Behaviour Consultant",city:"Vancouver",prov:"British Columbia",emp:"full-time",sal:"Not disclosed",date:"2026-02-05",url:"https://ca.linkedin.com/jobs/view/behaviour-consultant-at-family-centred-practices-group-4369180129"},
+  {s:"linkedin",co:"Buildable Behaviour ABA Therapy",pos:"Board Certified Behavior Analyst",city:"Brampton",prov:"Ontario",emp:"full-time",sal:"Not disclosed",date:"2026-02-05",url:"https://ca.linkedin.com/jobs/view/board-certified-behavior-analyst-4368967399"},
+  {s:"linkedin",co:"Anchor Rehabilitation Support Services",pos:"Registered Behaviour Analyst",city:"Hamilton",prov:"Ontario",emp:"full-time",sal:"Not disclosed",date:"2026-02-04",url:"https://ca.linkedin.com/jobs/view/registered-behaviour-analyst-at-anchor-rehabilitation-support-services-inc-4368768878"},
+  {s:"indeed",co:"Insight Behavioural Health",pos:"Registered Behaviour Analyst (R.B.A.)",city:"North York",prov:"Ontario",emp:"full-time",sal:"$65K–$78K/yr",date:"2026-02-04",url:"https://www.indeed.com/viewjob?jk=195f63c2b88c9474"},
+  {s:"indeed",co:"Whole Hearts ABA",pos:"Registered Behaviour Analyst",city:"Orangeville",prov:"Ontario",emp:"part-time",sal:"$40–$50/hr",date:"2026-02-03",url:"https://www.indeed.com/viewjob?jk=71d5b94a3653d93e"},
+  {s:"linkedin",co:"Children's Treatment Centre Chatham-Kent",pos:"Registered Behaviour Analyst",city:"Chatham-Kent",prov:"Ontario",emp:"contract",sal:"Not disclosed",date:"2026-02-03",url:"https://ca.linkedin.com/jobs/view/registered-behaviour-analyst-at-children-s-treatment-centre-and-foundation-of-chatham-kent-4368235652"},
+  {s:"linkedin",co:"Spark Lifecare",pos:"Registered Behaviour Analyst (Ont.)",city:"Ottawa",prov:"Ontario",emp:"contract",sal:"from $84/hr",date:"2026-02-03",url:"https://ca.linkedin.com/jobs/view/registered-behaviour-analyst-ont-at-spark-lifecare-4357505729"},
+  {s:"indeed",co:"Great Gains Therapy",pos:"Registered Behaviour Analyst",city:"Etobicoke",prov:"Ontario",emp:"part-time",sal:"$85–$100/hr",date:"2026-02-03",url:"https://www.indeed.com/viewjob?jk=d394a5a5fb295864"},
+  {s:"indeed",co:"The Behaviour Team",pos:"Registered Behaviour Analyst (RBA) BCBA",city:"North York",prov:"Ontario",emp:"part-time",sal:"from $50/hr",date:"2026-02-02",url:"https://www.indeed.com/viewjob?jk=b9eff0f239b4c0d6"},
+  {s:"linkedin",co:"Centre for Autism Services Alberta",pos:"Board Certified Behavior Analyst",city:"Calgary",prov:"Alberta",emp:"part-time",sal:"Not disclosed",date:"2026-02-02",url:"https://ca.linkedin.com/jobs/view/board-certified-behavior-analyst-at-centre-for-autism-services-alberta-4368412465"},
+  {s:"linkedin",co:"Centre for Autism Services Alberta",pos:"Board Certified Behavior Analyst",city:"Calgary",prov:"Alberta",emp:"contract",sal:"Not disclosed",date:"2026-02-02",url:"https://ca.linkedin.com/jobs/view/board-certified-behavior-analyst-at-centre-for-autism-services-alberta-4357375185"},
+  {s:"indeed",co:"Empowered Academy",pos:"RBA/Registered Behaviour Analyst",city:"Kanata",prov:"Ontario",emp:"full-time",sal:"$75K–$90K/yr",date:"2026-02-02",url:"https://www.indeed.com/viewjob?jk=572c2bf924b178a1"},
+  {s:"indeed",co:"Lake Ridge Community Support Services",pos:"Behaviour Consultant",city:"Whitby",prov:"Ontario",emp:"full-time",sal:"$69K–$73K/yr",date:"2026-01-29",url:"https://www.indeed.com/viewjob?jk=2e50df1ff23a6bb1"},
+  {s:"linkedin",co:"Monarch House",pos:"Registered Behaviour Analyst (BCBA), Ontario",city:"Toronto",prov:"Ontario",emp:"full-time",sal:"$72.5K–$102K/yr",date:"2026-01-24",url:"https://ca.linkedin.com/jobs/view/registered-behaviour-analyst-bcba-ontario-at-monarch-house-4365609921"},
+  {s:"indeed",co:"Bethesda Services",pos:"Full Time Associate Clinical Supervisor",city:"Thorold",prov:"Ontario",emp:"other",sal:"from $91,562/yr",date:"2026-01-23",url:"https://www.indeed.com/viewjob?jk=9b00e8afcdd11089"},
+  {s:"indeed",co:"Monarch House",pos:"Registered Behaviour Analyst (BCBA), Ontario",city:"Toronto",prov:"Ontario",emp:"other",sal:"$72.5K–$102K/yr",date:"2026-01-22",url:"https://www.indeed.com/viewjob?jk=63ec22d0d380c3ba"},
+  {s:"indeed",co:"Trillium Support Services",pos:"Board Certified Behavior Analyst",city:"Hamilton",prov:"Ontario",emp:"part-time",sal:"$60–$80/hr",date:"2026-01-20",url:"https://www.indeed.com/viewjob?jk=356fcd3e5370e889"},
+  {s:"linkedin",co:"Algonquin & Lakeshore Catholic DSB",pos:"RBA, Temporary Part Time",city:"Napanee",prov:"Ontario",emp:"part-time",sal:"Not disclosed",date:"2026-01-19",url:"https://ca.linkedin.com/jobs/view/registered-behaviour-analyst-temporary-part-time-at-algonquin-and-lakeshore-catholic-district-school-board-4360495958"},
+  {s:"linkedin",co:"Algonquin & Lakeshore Catholic DSB",pos:"RBA, Temporary Full Time",city:"Napanee",prov:"Ontario",emp:"full-time",sal:"Not disclosed",date:"2026-01-19",url:"https://ca.linkedin.com/jobs/view/registered-behaviour-analyst-temporary-full-time-at-algonquin-and-lakeshore-catholic-district-school-board-4360934421"},
+  {s:"indeed",co:"The Hullabaloo ABA Inc.",pos:"Registered Behaviour Analyst",city:"Mississauga",prov:"Ontario",emp:"full-time",sal:"$65K–$86K/yr",date:"2026-01-18",url:"https://www.indeed.com/viewjob?jk=9382a744231e0507"},
+  {s:"indeed",co:"Centre for Autism Services Alberta",pos:"Board Certified Behavior Analyst (BCBA)",city:"Calgary",prov:"Alberta",emp:"full-time",sal:"Not disclosed",date:"2026-01-15",url:"https://www.indeed.com/viewjob?jk=2187aa162f75c936"},
+  {s:"indeed",co:"Lumenus Community Services",pos:"Entry to School: Clinical Supervisor",city:"Toronto",prov:"Ontario",emp:"other",sal:"$82.7K–$91.4K/yr",date:"2026-01-12",url:"https://www.indeed.com/viewjob?jk=348992c934e80d02"},
+  {s:"indeed",co:"Supported Lifestyles Ltd",pos:"Adaptive Behaviour Consultant",city:"Calgary",prov:"Alberta",emp:"part-time",sal:"$24–$29/hr",date:"2026-01-11",url:"https://www.indeed.com/viewjob?jk=dffb63cb424c2701"},
+  {s:"indeed",co:"Comox Valley Child Dev. Association",pos:"Behaviour Consultant",city:"Courtenay",prov:"British Columbia",emp:"part-time",sal:"$42–$53/hr",date:"2025-12-17",url:"https://www.indeed.com/viewjob?jk=91c59f9bcb5cf98b"},
+  {s:"indeed",co:"Ottawa ABA Academy Inc.",pos:"BCBA - RBA registered Behaviour Analyst",city:"Ottawa",prov:"Ontario",emp:"casual",sal:"$60–$80/hr",date:"2025-12-03",url:"https://www.indeed.com/viewjob?jk=d9c883f21d7e779d"},
+  {s:"indeed",co:"Aiyana Services",pos:"Board Certified Behaviour Analyst (Contractor)",city:"Edmonton",prov:"Alberta",emp:"full-time",sal:"$25–$35/hr",date:"2025-12-02",url:"https://www.indeed.com/viewjob?jk=3eb1eca496008d55"},
+  {s:"indeed",co:"Posabilities Association of BC",pos:"Behaviour Consultant - BCBA Supervision",city:"British Columbia",prov:"British Columbia",emp:"full-time",sal:"from $45/hr",date:"2025-11-27",url:"https://www.indeed.com/viewjob?jk=a2b1241f16609db9"},
+  {s:"indeed",co:"SMJ Youth Services",pos:"Board Certified Behaviour Analyst (BCBA)",city:"Greater Napanee",prov:"Ontario",emp:"full-time",sal:"$63K–$83K/yr",date:"2025-11-23",url:"https://www.indeed.com/viewjob?jk=1b4f09a4632d973f"},
+  {s:"indeed",co:"ABA Learning Centre",pos:"Behaviour Analyst",city:"Surrey",prov:"British Columbia",emp:"other",sal:"Not disclosed",date:"2025-07-15",url:"https://www.indeed.com/viewjob?jk=f860f7f1ad9a20c3"},
+  {s:"indeed",co:"CBI Consultants",pos:"Behaviour Consultant",city:"British Columbia",prov:"British Columbia",emp:"other",sal:"$65.1K–$79.8K/yr",date:"2023-11-05",url:"https://www.indeed.com/viewjob?jk=4949ddf09140ae6e"}
+];
+
+let activeProvince = 'all';
+
+function renderTable(data) {
+  const tbody = document.getElementById('jobsBody');
+  tbody.innerHTML = data.map(j => `
+    <tr>
+      <td><span class="source-badge ${j.s}">${j.s}</span></td>
+      <td><a href="${j.url}" target="_blank" rel="noopener" class="job-link">${j.pos}</a></td>
+      <td>${j.co}</td>
+      <td>${j.city}</td>
+      <td>${j.prov}</td>
+      <td><span class="emp-badge ${j.emp}">${j.emp}</span></td>
+      <td>${j.sal}</td>
+      <td style="white-space:nowrap">${j.date}</td>
+    </tr>
+  `).join('');
+}
+
+function filterTable() {
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  const filtered = jobs.filter(j => {
+    const matchProv = activeProvince === 'all' || j.prov === activeProvince;
+    const matchSearch = !q || j.pos.toLowerCase().includes(q) || j.co.toLowerCase().includes(q) || j.city.toLowerCase().includes(q) || j.sal.toLowerCase().includes(q);
+    return matchProv && matchSearch;
+  });
+  renderTable(filtered);
+}
+
+function filterProvince(btn, prov) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  activeProvince = prov;
+  filterTable();
+}
+
+renderTable(jobs);
+</script>
+
+</body>
+</html>
